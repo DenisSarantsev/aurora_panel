@@ -1,0 +1,79 @@
+.header {
+	background-color: $mainWhite;
+	box-shadow: 0px 10px 38px 0px rgba(148,148,148,0.35);
+	-webkit-box-shadow: 0px 10px 38px 0px rgba(148,148,148,0.35);
+	-moz-box-shadow: 0px 10px 38px 0px rgba(148,148,148,0.35);
+	z-index: 100;
+	padding: toRem(5);
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__logo-container {
+		display: flex;
+		align-items: center;
+	}
+	&__logo {
+		max-width: toRem(100);
+		width: 100%;
+	}
+	&__logo-subtitle {
+		font-size: toRem(20);
+		color: $lightGrey;
+	}
+	&__right-container {
+		font-size: toRem(16);
+		// font-weight: 700;
+		color: rgba($color: #000000, $alpha: 0.7);
+		display: flex;
+		gap: toRem(10);
+	}
+	&__user-information {
+		border: 1px solid rgba($color: #000000, $alpha: 0.5);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: toRem(100);
+		padding: toRem(5) toRem(15);
+		transition: all 0.3s ease 0s;
+		&:hover {
+			color: $mainWhite;
+			cursor: pointer;
+			background-color: $mainYellow;
+			border: 1px solid $mainYellow;
+			transition: all 0.3s ease 0s;
+			color: $mainColor;
+		}
+	}
+	&__sign-out {
+		background-color: $mainYellow;
+		border-radius: toRem(100);
+		padding: toRem(5) toRem(15);
+		transition: all 0.3s ease 0s;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&:hover {
+			transition: all 0.3s ease 0s;
+			color: $mainWhite;
+			cursor: pointer;
+			background-color: $mainRed;
+		}
+	}
+	&__sign-in {
+		background-color: $mainYellow;
+		border-radius: toRem(100);
+		padding: toRem(5) toRem(15);
+		transition: all 0.3s ease 0s;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&:hover {
+			transition: all 0.3s ease 0s;
+			color: $mainWhite;
+			cursor: pointer;
+			background-color: $mainRed;
+		}
+	}
+}
