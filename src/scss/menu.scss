@@ -1,0 +1,38 @@
+.menu {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: toRem(25);
+	background-color: $lightYellow;
+	border-radius: $blocksBorderRadius;
+	&__menu-list {
+		width: 100%;
+		display: flex;
+		align-items: start;
+		font-size: toRem(16);
+	}
+	&__menu-item {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		transition: all 0.3s ease 0s;
+		font-weight: 500;
+		padding: toRem(10);
+		color: rgba($color: #000000, $alpha: 1);
+		border-radius: $blocksBorderRadius;
+		&:hover {
+			cursor: pointer;
+			font-weight: 500;
+			transition: all 0.3s ease 0s;
+			background-color: $mainYellow;
+			color: rgba($color: #000000, $alpha: 1);
+		}
+	}
+}
+
+.menu-active-button {
+	background-color: #ffc93c;
+	border-radius: $blocksBorderRadius;
+}
+

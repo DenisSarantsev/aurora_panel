@@ -8,115 +8,605 @@
 			@@include('html/_header.htm',{})
 			<main class="page">
 				<div class="page__container">
-					@@include('html/_sidebar.htm',{})
-					<section class="page__content">
-						<ul class="page__table-title">
-							<li class="page__table-title-item">
-								Дата та час
-							</li>
-							<li class="page__table-title-item">
-								П.І.Б.
-							</li>
-							<li class="page__table-title-item">
-								Вакансія
-							</li>
-							<li class="page__table-title-item">
-								Місто
-							</li>
-							<li class="page__table-title-item">
-								Контакти
-							</li>
-							<li class="page__table-title-item">
-								Анкета
-							</li>
-						</ul>
-						<div class="page__table-result-container">
-							<ul class="page__row">
-								<li class="page__item">
-									28.12.2023
+					<!------------------------------------------------------------------------------------------------------------------------ Головний сайдбар -->
+					@@include('html/_menu.htm',{})
+					<!------------------------------------------------------------------------------------------------------------------------- Фільтр заявок кандидатів -->
+					@@include('html/_applications-filter.htm',{})
+					<!------------------------------------------------------------------------------------------------------------------------- Фільтр вакансій -->
+					<!------------------------------------------------------------------------------------------------------------------------- Панель налаштувань аналітики -->
+					<section class="page__content applications">
+						<div class="applications__table-result-container">
+							<ul class="applications__table-title">
+								<li class="applications__table-title-item">
+									Дата та час
 								</li>
-								<li class="page__item">
-									Саранцев Денис Костянтинович
+								<li class="applications__table-title-item">
+									П.І.Б.
 								</li>
-								<li class="page__item">
-									Охоронець
+								<li class="applications__table-title-item">
+									Вакансія
 								</li>
-								<li class="page__item">
-									Київ
+								<li class="applications__table-title-item">
+									Місто
 								</li>
-								<li class="page__item">
-									+380930000000
+								<li class="applications__table-title-item">
+									Контакти
 								</li>
-								<li class="page__item">
-									<div class="questionnaire">
-										Анкета
-									</div>
+								<li class="applications__table-title-item">
+									Анкета
 								</li>
 							</ul>
-							<ul class="page__row">
-								<li class="page__item">
+
+							<ul class="applications__row">
+								<li class="applications__item">
 									28.12.2023
 								</li>
-								<li class="page__item">
+								<li class="applications__item">
 									Саранцев Денис Костянтинович
 								</li>
-								<li class="page__item">
+								<li class="applications__item">
 									Охоронець
 								</li>
-								<li class="page__item">
+								<li class="applications__item">
 									Київ
 								</li>
-								<li class="page__item">
+								<li class="applications__item">
 									+380930000000
 								</li>
-								<li class="page__item">
-									<div class="questionnaire">
-										Анкета
-									</div>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
 								</li>
 							</ul>
-							<ul class="page__row">
-								<li class="page__item">
+							<ul class="applications__row">
+								<li class="applications__item">
 									28.12.2023
 								</li>
-								<li class="page__item">
+								<li class="applications__item">
 									Саранцев Денис Костянтинович
 								</li>
-								<li class="page__item">
+								<li class="applications__item">
 									Охоронець
 								</li>
-								<li class="page__item">
+								<li class="applications__item">
 									Київ
 								</li>
-								<li class="page__item">
+								<li class="applications__item">
 									+380930000000
 								</li>
-								<li class="page__item">
-									<div class="questionnaire">
-										Анкета
-									</div>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
 								</li>
 							</ul>
-							<ul class="page__row">
-								<li class="page__item">
+							<ul class="applications__row">
+								<li class="applications__item">
 									28.12.2023
 								</li>
-								<li class="page__item">
+								<li class="applications__item">
 									Саранцев Денис Костянтинович
 								</li>
-								<li class="page__item">
+								<li class="applications__item">
 									Охоронець
 								</li>
-								<li class="page__item">
+								<li class="applications__item">
 									Київ
 								</li>
-								<li class="page__item">
+								<li class="applications__item">
 									+380930000000
 								</li>
-								<li class="page__item">
-									<div class="questionnaire">
-										Анкета
-									</div>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
+								</li>
+							</ul>
+							<ul class="applications__row">
+								<li class="applications__item">
+									28.12.2023
+								</li>
+								<li class="applications__item">
+									Саранцев Денис Костянтинович
+								</li>
+								<li class="applications__item">
+									Охоронець
+								</li>
+								<li class="applications__item">
+									Київ
+								</li>
+								<li class="applications__item">
+									+380930000000
+								</li>
+								<li class="applications__item applications__item-link">
+									<button class="applications__application-button">
+										<img src="@img/icons/link-icon.png" alt="link icon">
+									</button>
 								</li>
 							</ul>
 						</div>

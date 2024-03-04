@@ -1,1 +1,35 @@
 // Заголовки, загальні БЕМ блоки та інше...
+.grey-button-main-style {
+	display: flex;
+	background-color: #ececec; 
+	align-items: center;
+	justify-content: center;
+	border-radius: toRem(5);
+	padding: toRem(5) toRem(15);
+	transition: all 0.3s ease 0s;
+	font-weight: 500;
+	&:hover {
+		color: $mainWhite;
+		cursor: pointer;
+		background-color: $mainYellow;
+		transition: all 0.3s ease 0s;
+		color: $mainColor;
+	}
+}
+// Стили для механики закрывания/открывания блоков, например фильтра
+.rotate-icon {
+	transform: rotate(90deg);
+	transition: all 0.3s ease 0s;
+}
+.null-height {
+	height: toRem(0);
+	transition: all 0.3s ease 0s;
+	padding: toRem(0);
+	overflow: hidden;
+}
+
+.auto-height {
+	padding: toRem(10) toRem(0);
+	height: auto;
+	transition: all 0.3s ease 0s;
+}
