@@ -201,11 +201,24 @@ h6 {
   transition: all 0.3s ease 0s;
 }
 
+.hidden-template {
+  display: none;
+}
+
+._hidden {
+  display: none;
+}
+
+.display-grid {
+  display: -ms-grid;
+  display: grid;
+}
+
 .header {
   background-color: rgb(255, 255, 255);
-  box-shadow: 0px 10px 38px 0px rgba(148, 148, 148, 0.35);
-  -webkit-box-shadow: 0px 10px 38px 0px rgba(148, 148, 148, 0.35);
-  -moz-box-shadow: 0px 10px 38px 0px rgba(148, 148, 148, 0.35);
+  box-shadow: 0px 7px 20px 0px rgba(148, 148, 148, 0.35);
+  -webkit-box-shadow: 0px 7px 20px 0px rgba(148, 148, 148, 0.35);
+  -moz-box-shadow: 0px 7px 20px 0px rgba(148, 148, 148, 0.35);
   z-index: 100;
   padding: 0.3125rem;
 }
@@ -306,11 +319,11 @@ h6 {
 
 .wrapper {
   height: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .page__container {
-  padding: 1.5625rem 0.9375rem 0.9375rem 0.9375rem;
+  padding: 0.9375rem 0.9375rem 0.9375rem 0.9375rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -388,8 +401,8 @@ h6 {
 .applications__table-title {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[6];
-  grid-template-columns: repeat(6, 1fr);
+  -ms-grid-columns: 100px 1fr 30px 1fr 150px 100px 1fr 70px 30px 30px;
+  grid-template-columns: 100px 1fr 30px 1fr 150px 100px 1fr 70px 30px 30px;
   -ms-grid-rows: 1fr;
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
@@ -398,6 +411,7 @@ h6 {
   background-color: rgba(255, 221, 0, 0.5);
   font-weight: 500;
   border-radius: 0.4375rem;
+  padding: 0.3125rem;
 }
 
 .applications__table-title-item {
@@ -407,12 +421,25 @@ h6 {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 0.625rem 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.3125rem 0;
+  text-align: center;
   color: black;
+  font-size: 0.875rem;
+}
+
+.applications__table-file-icon {
+  width: 1.125rem;
+}
+
+.applications__table-link-icon {
+  width: 0.9375rem;
 }
 
 .applications__table-result-container {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
 }
 
 .applications__table-result-container > *:not(:last-child):not(:first-child) {
@@ -420,15 +447,13 @@ h6 {
 }
 
 .applications__row {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[6];
-  grid-template-columns: repeat(6, 1fr);
+  -ms-grid-columns: 100px 1fr 30px 1fr 150px 100px 1fr 70px 30px 30px;
+  grid-template-columns: 100px 1fr 30px 1fr 150px 100px 1fr 70px 30px 30px;
   -ms-grid-rows: 1fr;
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   width: 100%;
   padding: 0.3125rem;
 }
@@ -458,6 +483,7 @@ h6 {
   white-space: normal;
   -ms-hyphens: manual;
       hyphens: manual;
+  padding: 0rem 0.1875rem;
 }
 
 .applications__item-link {
@@ -525,13 +551,6 @@ h6 {
   width: 100%;
   padding: 0.3125rem 0.9375rem;
   background-color: rgba(255, 221, 0, 0.5);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   overflow: hidden;
   border-radius: 0.4375rem;
 }
@@ -546,7 +565,15 @@ h6 {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  gap: 1.25rem;
   height: 100%;
+}
+
+.applications-filter__left-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1.875rem;
 }
 
 .applications-filter__filter-title-container {
@@ -603,15 +630,68 @@ h6 {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: end;
+  gap: 1.25rem;
   width: 100%;
 }
 
+.applications-filter__reset-button {
+  min-width: 15.625rem;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.625rem 2.5rem;
+  border-radius: 0.3125rem;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  background-color: rgba(59, 56, 25, 0.3);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0.3125rem;
+}
+
+.applications-filter__reset-button span {
+  font-size: 0.8125rem;
+}
+
+.applications-filter__reset-button:hover {
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  background-color: rgba(204, 0, 0, 0.4);
+}
+
+.applications-filter__reset-button:active {
+  background-color: rgba(59, 56, 25, 0.4);
+}
+
 .applications-filter__result-button {
-  padding: 0.625rem 1.25rem;
+  min-width: 15.625rem;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.625rem 2.5rem;
   border-radius: 0.3125rem;
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
   background-color: #ffc93c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0.3125rem;
+}
+
+.applications-filter__result-button span {
+  font-size: 0.8125rem;
 }
 
 .applications-filter__result-button:hover {
@@ -621,7 +701,7 @@ h6 {
 }
 
 .applications-filter__result-button:active {
-  background-color: rgb(255, 221, 0);
+  background-color: #ffc93c;
 }
 
 .parametrs {
@@ -727,6 +807,8 @@ h6 {
   background-color: #fff;
   border-radius: 0.4375rem;
   max-width: 25rem;
+  gap: 0.3125rem;
+  padding: 0rem 0.4375rem;
   width: 100%;
 }
 
@@ -741,7 +823,6 @@ h6 {
   font-size: 1rem;
   border: 1px solid transparent;
   border-radius: 0.4375rem;
-  padding: 0rem 0.3125rem;
 }
 
 .search__button {
@@ -771,6 +852,118 @@ h6 {
 
 .search__button img {
   width: 1.25rem;
+}
+
+.applications-filter__filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1.25rem;
+  padding: 0.625rem 0;
+}
+
+.kinds-app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  gap: 0.625rem;
+}
+
+.kinds-app__title {
+  font-size: 1rem;
+}
+
+.kinds-app__checkboxes-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.8125rem;
+}
+
+.kinds-app__checkbox-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 1.625rem;
+  background-color: rgba(255, 201, 60, 0.7);
+  max-width: 31.25rem;
+  border-radius: 0.3125rem;
+  font-size: 1rem;
+  padding: 0rem 0.9375rem;
+}
+
+.kinds-app__checkbox-container:hover {
+  cursor: pointer;
+}
+
+.kinds-app__checkbox-input:hover {
+  cursor: pointer;
+}
+
+.kinds-app__checkbox-label {
+  padding-left: 0.1875rem;
+}
+
+.kinds-app__checkbox-label:hover {
+  cursor: pointer;
+}
+
+.search-app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  gap: 0.625rem;
+}
+
+.search-app__title {
+  font-size: 1rem;
+}
+
+.search-app__select {
+  width: 600px;
+  outline: none;
+  height: 1.625rem;
+  background-color: rgba(255, 201, 60, 0.7);
+  border-radius: 0.3125rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: black;
+  padding: 0rem 0.9375rem;
+  text-align: center;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-appearance: none;
+  /* Для WebKit (Chrome, Safari) */
+  -moz-appearance: none;
+  /* Для Firefox */
+  appearance: none;
+  /* Общий стиль */
+  /* Настройка стилей для выбранного состояния (опционально) */
+}
+
+.search-app__select:hover {
+  cursor: pointer;
+  background-color: rgb(255, 221, 0);
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
 }
 
 .pagination {

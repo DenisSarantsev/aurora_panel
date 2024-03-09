@@ -16,6 +16,7 @@
 		color: $mainColor;
 	}
 }
+
 // Стили для механики закрывания/открывания блоков, например фильтра
 .rotate-icon {
 	transform: rotate(90deg);
@@ -27,9 +28,22 @@
 	padding: toRem(0);
 	overflow: hidden;
 }
-
 .auto-height {
 	padding: toRem(10) toRem(0);
 	height: auto;
 	transition: all 0.3s ease 0s;
+}
+
+// Стили для работы переключателя шаблонов
+.hidden-template {
+	display: none;
+}
+
+// Стиль для скрытия элемента
+._hidden {
+	display: none;
+}
+// Добавляем сетку
+.display-grid {
+	display: grid;
 }

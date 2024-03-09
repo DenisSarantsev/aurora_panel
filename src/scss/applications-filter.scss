@@ -3,15 +3,18 @@
 	width: 100%;
 	padding: toRem(5) toRem(15);
 	background-color: $lightYellow;
-	display: flex;
-	flex-direction: column;
 	overflow: hidden;
 	border-radius: $blocksBorderRadius;
 		&__title-container {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+			gap: toRem(20);
 			height: 100%;
+		}
+		&__left-container {
+			display: flex;
+			gap: toRem(30);
 		}
 		&__filter-title-container {
 			display: flex;
@@ -54,20 +57,57 @@
 		&__bottom-container {
 			display: flex;
 			justify-content: end;
+			gap: toRem(20);
 			width: 100%;
 		}
+		&__reset-button {
+			min-width: toRem(250);
+			font-size: toRem(16);
+			font-weight: 500;
+			padding: toRem(10) toRem(40);
+			border-radius: toRem(5);
+			transition: all 0.3s ease 0s;
+			background-color: rgba(59, 56, 25, 0.3);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: toRem(5);
+			& span {
+				font-size: toRem(13);
+			}
+			&:hover {
+				transition: all 0.3s ease 0s;
+				background-color: rgba(204, 0, 0, 0.4);
+			}
+			&:active {
+				background-color: rgba(59, 56, 25, 0.4);
+			}
+		}
 		&__result-button {
-			padding: toRem(10) toRem(20);
+			min-width: toRem(250);
+			font-size: toRem(16);
+			font-weight: 500;
+			padding: toRem(10) toRem(40);
 			border-radius: toRem(5);
 			transition: all 0.3s ease 0s;
 			background-color: $activeButton;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: toRem(5);
+			& span {
+				font-size: toRem(13);
+			}
 			&:hover {
 				transition: all 0.3s ease 0s;
 				background-color: $mainYellow;
 			}
 			&:active {
-				background-color: $mainYellow;
+				background-color: $activeButton;
 			}
+		}
+		&__input-eyes {
+
 		}
 }
 
@@ -150,6 +190,8 @@
 		background-color: #fff;
 		border-radius: $blocksBorderRadius;
 		max-width: toRem(400);
+		gap: toRem(5);
+		padding: toRem(0) toRem(7);
 		width: 100%;
 		&:focus {
 			border: 1px solid $activeButton;
@@ -162,7 +204,6 @@
 		font-size: toRem(16);
 		border: 1px solid transparent;
 		border-radius: $blocksBorderRadius;
-		padding: toRem(0) toRem(5);
 	}
 	&__button {
 		display: flex;
@@ -185,9 +226,95 @@
 }
 
 
-.filter {
-		&__title {
-		}
+.applications-filter {
+	&__filter {
+		display: flex;
+		gap: toRem(20);
+		padding: toRem(10) 0;
+	}
+	&__kinds {
+	}
+	&__search-app {
+	}
 }
+.kinds-app {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: toRem(10);
+	&__title {
+		font-size: toRem(16);
+	}
+	&__checkboxes-container {
+		display: flex;
+		gap: toRem(13)
+	}
+	&__checkbox-container {
+		display: flex;
+		align-items: center;
+		height: toRem(26);
+		background-color: rgba(255, 201, 60, 0.7);
+		max-width: toRem(500);
+		border-radius: toRem(5);
+		font-size: toRem(16);
+		padding: toRem(0) toRem(15);
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	&__checkbox-input {
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	&__checkbox-label {
+		padding-left: toRem(3);
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
+.search-app {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: toRem(10);
+	&__title {
+		font-size: toRem(16);
+	}
+	&__select {
+		width: 600px;
+		outline: none;
+		height: toRem(26);
+		background-color: rgba(255, 201, 60, 0.7);
+		border-radius: toRem(5);
+		font-size: toRem(16);
+		font-weight: 500;
+		color: rgba($color: #000000, $alpha: 1);
+		padding: toRem(0) toRem(15);
+		text-align: center;
+		transition: all 0.3s ease 0s;
+		font-family: Arial, Helvetica, sans-serif;
+		// box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.1) inset;
+		// -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.1) inset;
+		// -moz-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.1) inset;
+	
+		-webkit-appearance: none; /* Для WebKit (Chrome, Safari) */
+		-moz-appearance: none;    /* Для Firefox */
+		appearance: none;         /* Общий стиль */
+		// background-image: url('@img/icons/link-icon.png'); /* Замените на свою иконку */
+		// background-size: 12px;
+		// background-repeat: no-repeat;
 
+		
+		/* Настройка стилей для выбранного состояния (опционально) */
+		&:hover{
+			cursor: pointer;
+			background-color: $mainYellow;
+			transition: all 0.3s ease 0s;
+		}
+	}
+	&__option {
+	}
+}
 

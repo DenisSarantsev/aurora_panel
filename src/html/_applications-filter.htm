@@ -1,23 +1,25 @@
-<aside class="sidebar applications-filter open-filter null-gap">
+<aside template-name="applications" class="sidebar applications-filter open-filter template">
 	<div class="applications-filter__title-container">
-		<div class="applications-filter__sort sort">
-			<h3 class="sort__title">Сортувати за:</h3>
-			<select class="sort__select">
-				<option class="sort__category">Найновіші</option>
-				<option class="sort__category">За віком (від найбільшого)</option>
-				<option class="sort__category">За віком (за від найменшого)</option>
-				<option class="sort__category">За рейтингом кандидата</option>
-			</select>
-		</div>
-		<div class="applications-filter__search search">
-			<h3 class="search__title">
-				Пошук:
-			</h3>
-			<div class="search__input-container">
-				<input type="text" class="search__input">
-				<button class="search__button">
-					<img src="@img/icons/search-icon.png" alt="search icon">
-				</button>
+		<div class="applications-filter__left-container">
+			<div class="applications-filter__sort sort">
+				<h3 class="sort__title">Сортувати за:</h3>
+				<select class="sort__select applications-filter__sort-select">
+					<option value="new" class="sort__category applications-filter__sort-category">Найновіші</option>
+					<option value="old" class="sort__category applications-filter__sort-category">За віком (від найбільшого)</option>
+					<option value="young" class="sort__category applications-filter__sort-category">За віком (від найменшого)</option>
+				</select>
+			</div>
+			<div class="applications-filter__search search">
+				<h3 class="search__title">
+					Пошук:
+				</h3>
+				<div class="search__input-container">
+					<input type="text" class="search__input applications-filter__search-input">
+					<!-- <button class="search__button applications-filter__search-button">
+						<img src="@img/icons/search-icon.png" alt="search icon">
+					</button> -->
+				</div>
+				<div class="search__input-eyes _hidden">👀</div>
 			</div>
 		</div>
 		<div class="applications-filter__filter-title-container">
@@ -31,13 +33,29 @@
 		</div>
 	</div>
 	<div class="applications-filter__parametrs-container parametrs null-height">
-		<div class="applications-filter__filter filter">
-			
+		<div class="applications-filter__filter">
+			<div class="applications-filter__kinds kinds-app">
+				<h3 class="kinds-app__title">
+					Напрямок
+				</h3>
+				<div class="kinds-app__checkboxes-container">
+				</div>
+			</div>
+			<div class="applications-filter__search-app search-app">
+				<h3 class="search-app__title">
+					Вакансія
+				</h3>
+				<select class="search-app__select">
+				</select>
+			</div>
 		</div>
 	</div>
 	<div class="applications-filter__bottom-container null-height">
+		<button class="applications-filter__reset-button">
+			<span>❌</span> Скинути
+		</button>
 		<button class="applications-filter__result-button">
-			Фільтрувати
+			<span>✅</span> Фільтрувати
 		</button>
 	</div>
 </aside>
