@@ -2,13 +2,9 @@
 	<div class="vacancies-filter__title-container">
 		<div class="vacancies-filter__left-container">
 			<div class="vacancies-filter__sort sort-vacancies">
-				<h3 class="sort-vacancies__title">Сортувати за:</h3>
-				<select class="sort-vacancies__select">
-					<option class="sort-vacancies__category">Найновіші</option>
-					<option class="sort-vacancies__category">За віком (від найбільшого)</option>
-					<option class="sort-vacancies__category">За віком (за від найменшого)</option>
-					<option class="sort-vacancies__category">За рейтингом кандидата</option>
-				</select>
+				<h3 class="sort-vacancies__title">Напрямок:</h3>
+				<div class="sort-vacancies__checkboxes-container">
+				</div>
 			</div>
 			<div class="vacancies-filter__search search-vacancies">
 				<h3 class="search-vacancies__title">
@@ -23,5 +19,9 @@
 				<div class="search-vacancies__input-eyes _hidden">👀</div>
 			</div>
 		</div>
+		<button template-button="create-vacancy" class="vacancies-filter__add-vacancy add-vacancy-button template-switch-button">
+			<span>➕</span>
+			Додати вакансію
+		</button>
 	</div>
 </aside>

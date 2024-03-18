@@ -1,0 +1,117 @@
+
+.create-vacancy {
+	&__navigation-line {
+	}
+	&__back-button {
+	}
+	&__info-container {
+		margin-top: toRem(5);
+		padding: toRem(10);
+		border-radius: $blocksBorderRadius;
+		padding: toRem(15) toRem(15) toRem(20) toRem(15);
+		background-color: rgba($color: #000000, $alpha: 0.07);
+		display: flex;
+		flex-direction: column;
+		gap: toRem(20);
+	}
+	&__title {
+		font-weight: 500;
+		padding: toRem(3) 0;
+		& span {
+			padding: toRem(5) 0 toRem(5) toRem(5);
+		}
+	}
+	&__fields-container {
+		display: flex;
+		flex-direction: column;
+		gap: toRem(20);
+	}
+	&__field-container {
+		display: flex;
+		flex-direction: column;
+		font-size: toRem(14);
+		gap: toRem(10);
+	}
+	&__field-title {
+	}
+	&__field {
+	}
+	&__description {
+	}
+	&__description-textarea {
+		width: 100%;
+		border-radius: $blocksBorderRadius;
+		padding: toRem(10);
+		outline: none;
+		border: 2px solid transparent;
+		&:focus {
+			border: 2px solid $mainYellow;
+		}
+	}
+	&__button-container {
+		width: 100%;
+	}
+	&__send-button {
+		height: toRem(36);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: toRem(0) toRem(65);
+		border-radius: $blocksBorderRadius;
+		background-color: $lightYellow;
+		font-weight: 500;
+		transition: all 0.3s ease 0s;
+		&:hover {
+			transition: all 0.3s ease 0s;
+			background-color: $mainYellow;
+		}
+	}
+}
+
+.create-vacancy-name-input {
+	height: toRem(36);
+	border-radius: $blocksBorderRadius;
+	padding: toRem(10) toRem(15);
+	border: 2px solid transparent;
+	outline: none;
+	&:focus {
+		border: 2px solid $mainYellow;
+	}
+}
+
+.create-vacancy-radio-buttons-container {
+	display: flex;
+	flex-direction: column;
+	gap: toRem(10);
+	&__field-title {
+
+	}
+	&__items-container {
+		display: flex;
+		gap: toRem(10);
+	}
+	&__item {
+		height: toRem(36);
+		width: toRem(140);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: toRem(5);
+		background-color: $lightYellow;
+		border-radius: $blocksBorderRadius;
+		transition: all 0.3s ease 0s;
+		&:hover {
+			cursor: pointer;
+			background-color: $mainYellow;
+			transition: all 0.3s ease 0s;
+		}
+	}
+}
+
+.editorjs {
+	padding: toRem(25) 0;
+	height: auto;
+	background-color: #FFFFFF;
+	z-index: 1000;
+	border-radius: $blocksBorderRadius;
+}

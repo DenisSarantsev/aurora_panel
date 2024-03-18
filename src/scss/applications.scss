@@ -31,9 +31,9 @@
 		}
 		&__table-result-container {
 			font-size: toRem(14);
-			 &>*:not(:last-child):not(:first-child) {
-				border-bottom: 1px solid $borderColor;
-			 }
+			display: flex;
+			flex-direction: column;
+			gap: toRem(5);
 		}
 
 		&__row {
@@ -44,8 +44,12 @@
 			font-size: toRem(13);
 			width: 100%;
 			padding: toRem(5);
-			&:not(:first-child):not(:last-child) {
-				border-bottom: 1px solid $borderColor;
+			background-color: rgba($color: #000000, $alpha: 0.05);
+			border-radius: $blocksBorderRadius;
+			border: 2px solid transparent;
+			&:hover {
+				border: 2px solid $mainYellow;
+				cursor: pointer;
 			}
 			&>*:not(:last-child) {
 				border-right: 1px solid $borderColor;

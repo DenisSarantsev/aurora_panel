@@ -1,0 +1,104 @@
+
+.vacancies-filter {
+	height: toRem(36);
+	width: 100%;
+	padding: toRem(0) toRem(0) toRem(0) toRem(15);
+	background-color: $lightYellow;
+	overflow: hidden;
+	border-radius: $blocksBorderRadius;
+
+		&__title-container {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			align-items: center;
+			gap: toRem(30);
+			height: 100%;
+		}
+		&__left-container {
+			display: flex;
+			gap: toRem(30);
+		}
+		&__sort {
+		}
+		&__search {
+		}
+}
+
+.sort-vacancies {
+	display: flex;
+	align-items: center;
+	gap: toRem(15);
+		&__title {
+			font-size: toRem(16);
+			font-weight: 500;
+			color: rgba($color: #000000, $alpha: 1);
+		}
+		&__checkboxes-container {
+			display: flex;
+			align-items: center;
+			gap: toRem(10);
+		}
+		&__checkbox-container {
+			display: flex;
+			align-items: center;
+			height: toRem(36);
+			background-color: rgba(255, 201, 60, 0.7);
+			max-width: toRem(500);
+			border-radius: toRem(5);
+			font-size: toRem(16);
+			padding: toRem(0) toRem(15);
+			gap: toRem(5);
+			&:hover {
+				cursor: pointer;
+			}
+			&>* {
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
+}
+.search-vacancies {
+	display: flex;
+	align-items: center;
+	gap: toRem(15);
+	justify-content: center;
+		&__title {
+			font-size: toRem(16);
+			font-weight: 500;
+			color: rgba($color: #000000, $alpha: 1);
+		}
+		&__input-container {
+			display: flex;
+			align-items: center;
+			background-color: #fff;
+			border-radius: $blocksBorderRadius;
+			max-width: toRem(400);
+			gap: toRem(5);
+			padding: toRem(0) toRem(7);
+			width: 100%;
+			height: toRem(34);
+			border: 1px solid $mainYellow;
+			&:focus {
+				border: 1px solid $activeButton;
+			}
+		}
+		&__input {
+			outline: none;
+		}
+		&__input-eyes {
+		}
+}
+.add-vacancy-button {
+	height: toRem(34);
+	padding: toRem(6) toRem(10);
+	border-radius: $blocksBorderRadius;
+	transition: all 0.3s ease 0s;
+	background-color: $mainYellow;
+	border: 2px dashed rgba($color: #000000, $alpha: 0.3);
+	&:hover {
+		background-color: greenyellow;
+		transition: all 0.3s ease 0s;
+	}
+}

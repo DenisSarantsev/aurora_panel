@@ -84,6 +84,10 @@
 		"webpack-stream": "latest"
 	},
 	"dependencies": {
+		"@editorjs/editorjs": "^2.29.0",
+		"@editorjs/nested-list": "^1.4.2",
+		"@editorjs/raw": "^2.5.0",
+		"@editorjs/simple-image": "^1.6.0",
 		"gulp-cheerio": "^1.0.0",
 		"isotope-layout": "^3.0.6",
 		"react": "^18.2.0",

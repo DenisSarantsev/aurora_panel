@@ -1,0 +1,252 @@
+
+.order {
+	&__navigation-line {
+		display: flex;
+		justify-content: space-between;
+	}
+	&__back-button {
+	}
+	&__active-marker {
+		padding: toRem(5) toRem(10);
+		border: 1px solid rgba($color: #000000, $alpha: 0.3);
+		border-radius: $blocksBorderRadius;
+	}
+	&__user-info {
+		margin-top: toRem(5);
+		padding: toRem(10) toRem(10);
+		background-color: rgba($color: #000000, $alpha: 0.07);
+		border-radius: $blocksBorderRadius;
+	}
+	&__user-title {
+		font-weight: 500;
+		padding: toRem(3) 0;
+		& span {
+			padding: toRem(5) 0 toRem(5) toRem(5);
+		}
+	}
+	&__user-info-list {
+		margin-top: toRem(5);
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		gap: toRem(5);
+	}
+	&__user-info-item {
+		width: 100%;
+		display: flex;
+		gap: toRem(5);
+	}
+	&__user-info-item-title {
+		color: rgba($color: #000000, $alpha: 0.6);
+	}
+	&__user-info-item-data {
+	}
+	&__user-bottom-line {
+		margin-top: toRem(10);
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+		gap: toRem(15);
+	}
+	&__user-delete-button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: toRem(30);
+		padding: toRem(5) toRem(10);
+		border: 1px solid rgba($color: red, $alpha: 0.6);
+		border-radius: $blocksBorderRadius;
+		font-weight: 400;
+		transition: all 0.3s ease 0s;
+		color: rgba($color: red, $alpha: 0.6);
+		&:hover {
+			transition: all 0.3s ease 0s;
+			background-color: rgba($color: red, $alpha: 0.7);
+			color: #FFFFFF;
+		}
+	}
+	&__user-black-list-button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: toRem(30);
+		padding: toRem(5) toRem(10);
+		border: 1px solid rgba($color: #000000, $alpha: 0.6);
+		color: rgba($color: #000000, $alpha: 0.6);
+		border-radius: $blocksBorderRadius;
+		font-weight: 400;
+		transition: all 0.3s ease 0s;
+		&:hover {
+			transition: all 0.3s ease 0s;
+			background-color: rgba($color: #000000, $alpha: 0.7);
+			color: #FFFFFF;
+		}
+	}
+	&__application-info {
+		margin-top: toRem(5);
+		padding: toRem(10) toRem(10);
+		background-color: rgba($color: #000000, $alpha: 0.07);
+		border-radius: $blocksBorderRadius;
+	}
+	&__application-title-line {
+		display: flex;
+		justify-content: space-between;
+		padding: toRem(3) 0;
+	}
+	&__application-title {
+		font-weight: 500;
+		& span {
+			padding: toRem(5) 0 toRem(5) toRem(5);
+		}
+	}
+	&__application-info-item-active {
+		display: flex;
+		align-items: center;
+		gap: toRem(6);
+		& div {
+
+		}
+		padding: toRem(3) toRem(15);
+		border-radius: $blocksBorderRadius;
+		font-size: toRem(14);
+	}
+	&__application-info-list {
+		margin-top: toRem(5);
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		gap: toRem(5);
+	}
+	&__application-info-item {
+		width: 100%;
+		display: flex;
+		gap: toRem(4);
+	}
+	&__application-info-item-title {
+		color: rgba($color: #000000, $alpha: 0.6);
+	}
+	&__application-info-item-data {
+	}
+	&__application-info-resume-button-container {
+		display: flex;
+		align-items: end;
+		gap: toRem(3);
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	&__application-download-resume {
+		font-size: toRem(12);
+	}
+	&__application-info-botom-line {
+		margin-top: toRem(10);
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+		gap: toRem(15);
+	}
+	&__application-info-botom-line-delete-button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: toRem(30);
+		padding: toRem(5) toRem(10);
+		border: 1px solid rgba($color: red, $alpha: 0.6);
+		border-radius: $blocksBorderRadius;
+		font-weight: 400;
+		transition: all 0.3s ease 0s;
+		color: rgba($color: red, $alpha: 0.6);
+		&:hover {
+			transition: all 0.3s ease 0s;
+			background-color: rgba($color: red, $alpha: 0.7);
+			color: #FFFFFF;
+		}
+	}
+	&__application-info-botom-line-active-button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: toRem(30);
+		padding: toRem(5) toRem(10);
+		border: 1px solid rgba($color: #000000, $alpha: 0.6);
+		color: rgba($color: #000000, $alpha: 0.6);
+		border-radius: $blocksBorderRadius;
+		font-weight: 400;
+		transition: all 0.3s ease 0s;
+		&:hover {
+			transition: all 0.3s ease 0s;
+			background-color: rgba($color: #000000, $alpha: 0.7);
+			color: #FFFFFF;
+		}
+	}
+	&__application-info-comments {
+		margin-top: toRem(5);
+		padding: toRem(10) toRem(10);
+		background-color: rgba($color: #000000, $alpha: 0.07);
+		border-radius: $blocksBorderRadius;
+		display: flex;
+		flex-direction: column;
+		gap: toRem(10);
+	}
+	&__application-info-comments-title {
+		font-weight: 500;
+		& span {
+			padding: toRem(5) 0 toRem(5) toRem(5);
+		}
+	}
+	&__application-info-comments-text {
+
+	}
+	&__application-info-comments-textarea {
+		border-radius: $blocksBorderRadius;
+		min-height: toRem(90);
+		outline: none;
+		padding: toRem(5);
+		border: 1px solid transparent;
+		&:focus {
+			border: 1px solid $mainYellow;
+		}
+	}
+	&__application-info-comments-button {
+		height: toRem(36);
+		padding: toRem(5) toRem(35) toRem(5) toRem(30);
+		background-color: $lightYellow;
+		border-radius: $blocksBorderRadius;
+		font-weight: 500;
+		display: flex;
+		align-items: center;
+		gap: toRem(5);
+		transition: all 0.3s ease 0s;
+		&:hover {
+			transition: all 0.3s ease 0s;
+			background-color: $mainYellow;
+		}
+	}
+}
+
+.application-info-item-active-green {
+	height: toRem(7);
+	width: toRem(7);
+	border-radius: 50%;
+	padding: toRem(5);
+	background-color: rgb(0, 255, 0);
+}
+
+.application-info-item-active-red {
+	height: toRem(7);
+	width: toRem(7);
+	border-radius: 50%;
+	padding: toRem(5);
+	background-color: rgb(255, 56, 56);
+}
+
+.color-blue {
+	color: blue;
+}
+
+.user-app-tg-link {
+	color: blue;
+	&:hover {
+		text-decoration: underline;
+	}
+}

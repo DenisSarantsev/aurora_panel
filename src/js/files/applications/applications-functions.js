@@ -198,7 +198,7 @@ return resultOrders
 // -------------------------------------------------------------------------- Функции разбивки и создания пагинации
 // ----------> Разбиваем заявки на страницы
 export const divideOrdersToPages = (orders) => {
-	let ordersOnPage = 20; // Количество заявок на странице
+	let ordersOnPage = 50; // Количество заявок на странице
 	let pagesCounter = Math.floor(orders.length/ordersOnPage) + 1;
 	createPaginatePages(pagesCounter);
 	const result = {orders, ordersOnPage};
@@ -206,7 +206,7 @@ export const divideOrdersToPages = (orders) => {
 }
 // ----------> Создание кнопок пагинации в зависимости от количества заявок
 const createPaginatePages = (pagesCounter) => {
-	const paginationContainer = document.querySelector(".footer__pagination");
+	const paginationContainer = document.querySelector(".pagination-applications");
 	paginationContainer.innerHTML = "";
 	if ( pagesCounter > 1 ) {
 		// paginationContainer.insertAdjacentHTML("beforeend", 
@@ -273,7 +273,7 @@ export const addOrdersToTable = (orders, ordersOnPage) => {
 						<li class="applications__item">${order.title}</li>
 						<li class="applications__item">${addStatusToTable(order.status)}</li>
 						<li class="applications__item">${addResumeMarker(order.file_name)}</li>
-						<li class="applications__item">🔗</li>
+						<li template-button="order" order-id="${order._id}" user-telegram-id="${order.telegram_id}" class="applications__item template-switch-button user-application-button">🔗</li>
 					</ul>
 				`
 			)
@@ -312,6 +312,7 @@ export const showCurrentPageOrders = ( orders, currentPage, ordersOnPage ) => {
 			row.classList.add("_hidden");
 		}
 	}
+	return true
 }
 // -------------------------------------------------------------------------- Глаза в строке поиска
 export const showOrHiddenEyes = () => {

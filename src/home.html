@@ -14,8 +14,6 @@
 					<!------------------------------------------------------------------------------------------------------------------------- Фільтр заявок кандидатів -->
 					@@include('html/_applications-filter.htm',{})
 					<!------------------------------------------------------------------------------------------------------------------------- Фільтр вакансій -->
-					@@include('html/_analytics-filter.htm',{})
-					<!------------------------------------------------------------------------------------------------------------------------- Панель налаштувань аналітики -->
 					@@include('html/_vacancies-filter.htm',{})
 					<!------------------------------------------------------------------------------------------------------------------------- Шаблон з анкетами -->
 					<section template-name="applications" class="page__content applications template">
@@ -24,150 +22,299 @@
 					</section>
 					<!------------------------------------------------------------------------------------------------------------------------- Шаблон з вакансіями -->
 					<section template-name="vacancies" class="page__content vacancies hidden-template template">
-						<div class="applications__table-result-container">
-							<!-- <ul class="applications__table-title">
-								<li class="applications__table-title-item">
+						<div class="vacancies__table-result-container">
+							<ul class="vacancies__table-title">
+								<li class="vacancies__table-title-item">
 									Створення
 								</li>
-								<li class="applications__table-title-item">
-									П.І.Б.
+								<li class="vacancies__table-title-item">
+									Назва
 								</li>
-								<li class="applications__table-title-item">
-									Вік
-								</li>
-								<li class="applications__table-title-item">
-									Місто
-								</li>
-								<li class="applications__table-title-item">
-									Контакти
-								</li>
-								<li class="applications__table-title-item">
+								<li class="vacancies__table-title-item">
 									Напрямок
 								</li>
-								<li class="applications__table-title-item">
-									Вакансія
+								<li class="vacancies__table-title-item">
+									ID
 								</li>
-								<li class="applications__table-title-item">
-									Статус
+								<li class="vacancies__table-title-item">
+									🔗
 								</li>
-								<li class="applications__table-title-item">
-									<img class="applications__table-file-icon" src="@img/icons/resume.png" alt="file">
-								</li>
-								<li  class="applications__table-title-item">
-									<img class="applications__table-link-icon" src="@img/icons/link-icon.png" alt="link">
-								</li>
-							</ul> -->
+							</ul>
 
-							<!-- <ul class="applications__row">
-								<li class="applications__item">
+							<ul class="vacancies__row">
+								<li class="vacancies__item">
 									28.12.2023
 								</li>
-								<li class="applications__item">
-									Іванов Іван Іванович
+								<li class="vacancies__item">
+									Менеджер/ка з комунікацій у відділ корпоративної соціальної відповідальності (КСВ)
 								</li>
-								<li class="applications__item">
-									30
-								</li>
-								<li class="applications__item">
-									Київ
-								</li>
-								<li class="applications__item">
-									+380930000000
-								</li>
-								<li class="applications__item">
+								<li class="vacancies__item">
 									Склад
 								</li>
-								<li class="applications__item">
-									Комірник
-								</li>
-								<li class="applications__item">
-									Новий
-								</li>
-								<li class="applications__item">
+								<li class="vacancies__item">
 									1
 								</li>
-								<li class="applications__item applications__item-link">
-									<button class="applications__application-button">
-										<img src="@img/icons/link-icon.png" alt="link icon">
-									</button>
+								<li class="vacancies__item">
+									<button class="vacancies__item-button">🔗</button>
 								</li>
-							</ul> -->
+							</ul>
+
+							<ul class="vacancies__row">
+								<li class="vacancies__item">
+									28.12.2023
+								</li>
+								<li class="vacancies__item">
+									Менеджер/ка з комунікацій у відділ корпоративної соціальної відповідальності (КСВ)
+								</li>
+								<li class="vacancies__item">
+									Склад
+								</li>
+								<li class="vacancies__item">
+									1
+								</li>
+								<li class="vacancies__item">
+									<button class="vacancies__item-button">🔗</button>
+								</li>
+							</ul>
 						</div>
 					</section>
 					<!------------------------------------------------------------------------------------------------------------------------- Шаблон аналітики -->
 					<section template-name="analytics" class="page__content analytics hidden-template template">
-						<div class="applications__table-result-container">
-							<ul class="applications__table-title">
-								<li class="applications__table-title-item">
-									Створення
+						
+					</section>
+					<!------------------------------------------------------------------------------------------------------------------------- Шаблон сторінки заявки -->
+					<section template-name="order" class="page__content order hidden-template template">
+						<div class="order__navigation-line">
+							<button template-button="applications" class="order__back-button template-switch-button back-button-style">
+								<span>←</span>
+								 Назад
+							</button>
+						</div>
+						<div class="order__user-info">
+							<h3 class="order__user-title">
+								<span>👤</span>
+								<span class="order__user-title-text">Дані про користувача:</span>
+							</h3>
+							<ul class="order__user-info-list">
+								<li class="order__user-info-item">
+									<div class="order__user-info-item-title">• Дата створення користувача - </div>
+									<div class="order__user-info-item-data user-app-create"></div>
 								</li>
-								<li class="applications__table-title-item">
-									П.І.Б.
+								<li class="order__user-info-item">
+									<div class="order__user-info-item-title">• П.І.Б. користувача - </div>
+									<div class="order__user-info-item-data user-app-name"></div>
 								</li>
-								<li class="applications__table-title-item">
-									Вік
+								<li class="order__user-info-item">
+									<div class="order__user-info-item-title">• Телефон профілю в телеграм - </div>
+									<div class="order__user-info-item-data user-app-phone"></div>
 								</li>
-								<li class="applications__table-title-item">
-									Місто
-								</li>
-								<li class="applications__table-title-item">
-									Контакти
-								</li>
-								<li class="applications__table-title-item">
-									Напрямок
-								</li>
-								<li class="applications__table-title-item">
-									Вакансія
-								</li>
-								<li class="applications__table-title-item">
-									Статус
-								</li>
-								<li class="applications__table-title-item">
-									<img class="applications__table-file-icon" src="@img/icons/resume.png" alt="file">
-								</li>
-								<li  class="applications__table-title-item">
-									<img class="applications__table-link-icon" src="@img/icons/link-icon.png" alt="link">
+								<li class="order__user-info-item">
+									<div class="order__user-info-item-title">• Посилання на профіль в телеграм - </div>
+									<a href="" target="_blank" class="order__user-info-item-data user-app-tg-link user-app-tg-href"></a>
+									<span>🔗</span>
 								</li>
 							</ul>
-
-							<ul class="applications__row">
-								<li class="applications__item">
-									28.12.2023
+							<div class="order__user-bottom-line">
+								<button class="order__user-delete-button">
+									Видалити користувача
+								</button>
+								<button class="order__user-black-list-button">
+									В чорний список
+								</button>
+							</div>
+						</div>
+						<div class="order__application-info">
+							<div class="order__application-title-line">
+								<h3 class="order__application-title">
+									<span>🧾</span>
+									<span class="order__application-title-text">Дані про останню заявку:</span>
+								</h3>
+								<div class="order__application-info-item-active">
+									<div class="application-info-item-active-green"></div>
+									<div class="application-info-item-active-red"></div>
+									<div class="order__application-info-item-active-status">Заявка активна</div>
+								</div>
+							</div>
+							<ul class="order__application-info-list">
+								<li class="order__application-info-item">
+									<div class="order__application-info-item-title">• П.І.Б. - </div>
+									<div class="order__application-info-item-data order-app-name"></div>
 								</li>
-								<li class="applications__item">
-									Іванов Іван Іванович
+								<li class="order__application-info-item">
+									<div class="order__application-info-item-title">• Телефон - </div>
+									<div class="order__application-info-item-data order-app-phone"></div>
 								</li>
-								<li class="applications__item">
-									30
+								<li class="order__application-info-item">
+									<div class="order__application-info-item-title">• Населений пункт - </div>
+									<div class="order__application-info-item-data order-app-city"></div>
 								</li>
-								<li class="applications__item">
-									Київ
+								<li class="order__application-info-item">
+									<div class="order__application-info-item-title">• Дата народження - </div>
+									<div class="order__application-info-item-data order-app-date"></div>
 								</li>
-								<li class="applications__item">
-									+380930000000
+								<li class="order__application-info-item">
+									<div class="order__application-info-item-title">• Назва вакансії - </div>
+									<div class="order__application-info-item-data order-app-title"></div>
 								</li>
-								<li class="applications__item">
-									Склад
+								<li class="order__application-info-item">
+									<div class="order__application-info-item-title">• Напрямок - </div>
+									<div class="order__application-info-item-data order-app-kind"></div>
 								</li>
-								<li class="applications__item">
-									Комірник
+								<li class="order__application-info-item">
+									<div class="order__application-info-item-title">• ID заявки - </div>
+									<div class="order__application-info-item-data order-app-id"></div>
 								</li>
-								<li class="applications__item">
-									Новий
+								<li class="order__application-info-item">
+									<div class="order__application-info-item-title">• Дата створення - </div>
+									<div class="order__application-info-item-data order-app-create"></div>
 								</li>
-								<li class="applications__item">
-									1
-								</li>
-								<li class="applications__item applications__item-link">
-									<button class="applications__application-button">
-										<img src="@img/icons/link-icon.png" alt="link icon">
+								<li class="order__application-info-item">
+									<div class="order__application-info-item-title">• Резюме - </div>
+									<button class="order__application-info-resume-button-container">
+										<div class="order__application-info-item-data order-app-resume"></div>
+										<div class="order__application-download-resume">⇩</div>
 									</button>
 								</li>
+								<li class="order__application-info-item">
+									<div class="order__application-info-item-title">• Спосіб оцінювання - </div>
+									<div class="order__application-info-item-data order-app-rating-type">Тестування / Chat GPT</div>
+								</li>
+								<li class="order__application-info-item">
+									<div class="order__application-info-item-title">• Кількість балів / Висновок - </div>
+									<div class="order__application-info-item-data order-app-rating"></div>
+								</li>
 							</ul>
+							<div class="order__application-info-botom-line">
+								<button class="order__application-info-botom-line-delete-button">
+									Видалити заявку
+								</button>
+								<button class="order__application-info-botom-line-active-button">
+									Деактивувати заявку
+								</button>
+							</div>
+						</div>
+						<div class="order__application-info-comments">
+							<h3 class="order__application-info-comments-title">
+								<span>📝</span>
+								<span>Додаткові коментарі про користувача:</span>
+							</h3>
+							<div class="order__application-info-comments-text">
+								Коментарі відсутні
+							</div>
+							<textarea class="order__application-info-comments-textarea"></textarea>
+							<div class="order__application-info-comments-bottom-line">
+								<button class="order__application-info-comments-button">
+									Залишити коментар
+								</button>
+							</div>
+						</div>
+					</section>
+					<!------------------------------------------------------------------------------------------------------------------------- Шаблон сторінки вакансії -->
+					<section template-name="vacancy" class="page__content vacancy hidden-template template">
+						<div class="vacancy__navigation-line">
+							<button template-button="vacancies" class="vacancy__back-button template-switch-button back-button-style">
+								<span>←</span>
+								 Назад
+							</button>
+						</div>
+						<div class="vacancy__user-info">
+							<div class="vacancy__top-line">
+								<h3 class="vacancy__user-title">
+									<span>📒</span>
+									<span class="vacancy__user-title-text">Інформація про вакансію:</span>
+								</h3>
+								<div class="vacancy__application-info-item-active">
+									<div class="vacancy-info-item-active-green"></div>
+									<div class="vacancy-info-item-active-red"></div>
+									<div class="vacancy__application-info-item-active-status">Вакансія активна</div>
+								</div>
+							</div>
+							<ul class="vacancy__user-info-list">
+								<li class="vacancy__user-info-item">
+									<div class="vacancy__user-info-item-title">• Дата створення - </div>
+									<div class="vacancy__user-info-item-data vacancy-create"></div>
+								</li>
+								<li class="vacancy__user-info-item">
+									<div class="vacancy__user-info-item-title">• Останнє редагування - </div>
+									<div class="vacancy__user-info-item-data vacancy-edit"></div>
+								</li>
+								<li class="vacancy__user-info-item">
+									<div class="vacancy__user-info-item-title">• Назва вакансії - </div>
+									<div class="vacancy__user-info-item-data vacancy-name"></div>
+								</li>
+								<li class="vacancy__user-info-item">
+									<div class="vacancy__user-info-item-title">• Напрямок - </div>
+									<div class="vacancy__user-info-item-data vacancy-kind"></div>
+								</li>
+								<li class="vacancy__user-info-item">
+									<div class="vacancy__user-info-item-title">• ID - </div>
+									<div class="vacancy__user-info-item-data vacancy-id"></div>
+								</li>
+								<li class="vacancy__user-info-item vacancy-description-container">
+									<div class="vacancy__user-info-item-title">• Опис вакансії: </div>
+									<div class="vacancy__user-info-item-data vacancy-description"></div>
+								</li>
+							</ul>
+							<div class="vacancy__user-bottom-line">
+								<button class="vacancy__user-delete-button">
+									Видалити вакансію
+								</button>
+								<button class="vacancy__user-black-list-button">
+									Деактивувати вакансію
+								</button>
+							</div>
+						</div>
+
+					</section>
+					<!------------------------------------------------------------------------------------------------------------------------- Сторінка створення вакансії -->
+					<section template-name="create-vacancy" class="page__content create-vacancy hidden-template template">
+						<div class="create-vacancy__navigation-line">
+							<button template-button="vacancies" class="create-vacancy__back-button template-switch-button back-button-style">
+								<span>←</span>
+									Назад
+							</button>
+						</div>
+						<div class="create-vacancy__info-container">
+							<h3 class="create-vacancy__title">
+								Заповніть інформацію про вакансію:
+							</h3>
+							<div class="create-vacancy__fields-container">
+								<div class="create-vacancy__field-container">
+									<h4 class="create-vacancy__field-title">Назва вакансії:</h4>
+									<input type="text" class="create-vacancy__field create-vacancy-name-input">
+								</div>
+								<div class="create-vacancy-radio-buttons-container">
+									<h4 class="create-vacancy-radio-buttons-container__field-title">Напрямок вакансії:</h4>
+									<div class="create-vacancy-radio-buttons-container__items-container">
+										<label class="create-vacancy-radio-buttons-container__item">
+											<span>Офіс</span>
+											<input type="radio" id="office" name="kind" class="create-vacancy__field">
+										</label>
+										<label class="create-vacancy-radio-buttons-container__item">
+											<span>Магазин</span>
+											<input type="radio" id="shop" name="kind" class="create-vacancy__field">
+										</label>
+										<label for="stock" class="create-vacancy-radio-buttons-container__item">
+											<span>Склад</span>
+											<input type="radio" id="stock" name="kind" class="create-vacancy__field">
+										</label>
+									</div>
+								</div>
+								<div class="create-vacancy__description">
+									<!-- <textarea class="create-vacancy__description-textarea" name="" id="" cols="30" rows="10"></textarea> -->
+									<div class="editorjs" id="editorjs"></div>
+								</div>
+							</div>
+							<div class="create-vacancy__button-container">
+								<button class="create-vacancy__send-button">
+									Зберегти
+								</button>
+							</div>
 						</div>
 					</section>
 				</div>
 			</main>
+			<script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
 			<!------------------------------------------------------------------------------------------------------------------------ Футер з пагінацією -->
 			@@include('html/_footer.htm',{})
 		</div>

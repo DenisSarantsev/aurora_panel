@@ -47,3 +47,22 @@
 .display-grid {
 	display: grid;
 }
+
+.back-button-style {
+	height: toRem(36);
+	padding: toRem(5) toRem(35) toRem(5) toRem(30);
+	background-color: $lightYellow;
+	border-radius: $blocksBorderRadius;
+	font-weight: 500;
+	display: flex;
+	align-items: center;
+	gap: toRem(5);
+	transition: all 0.3s ease 0s;
+	& span {
+		font-size: toRem(18);
+	};
+	&:hover {
+		transition: all 0.3s ease 0s;
+		background-color: $mainYellow;
+	}
+}

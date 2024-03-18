@@ -25,7 +25,7 @@
 	&__right-container {
 		display: flex;
 		align-items: center;
-		gap: toRem(10);
+		gap: toRem(15);
 		font-size: toRem(16);
 		font-weight: 500;
 		color: rgba($color: #000000, $alpha: 0.7);
@@ -35,8 +35,9 @@
 	}
 	&__sign-out {
 		background-color: $lightYellow;
+		height: toRem(36);
 		border-radius: toRem(5);
-		padding: toRem(5) toRem(15);
+		padding: toRem(5) toRem(25);
 		transition: all 0.3s ease 0s;
 		display: flex;
 		justify-content: center;
@@ -50,6 +51,7 @@
 	}
 	&__sign-in {
 		background-color: $lightYellow;
+		height: toRem(36);
 		border-radius: toRem(5);
 		padding: toRem(5) toRem(15);
 		transition: all 0.3s ease 0s;
