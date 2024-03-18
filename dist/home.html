@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>HomePage</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20240318122220">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<div class="wrapper">
+		<!------------------------------------------------------------------------------------------------------------------------ Шапка -->
+		<header class="header">
+			<div class="header__container">
+				<div class="header__logo-container">
+					<img src="img/logo-aurora.svg" alt="aurora logo" class="header__logo">
+					<div class="header__logo-subtitle">HR</div>
+				</div>
+				<div class="header__right-container">
+					<div class="header__user-information">
+						Денис
+					</div>
+					<div class="header__sign-out">
+						Вийти
+					</div>
+					<!-- <div class="header__sign-in">
+				Увійти
+			</div> -->
+				</div>
+			</div>
+		</header>
+		<main class="page">
+			<div class="page__container">
+				<!------------------------------------------------------------------------------------------------------------------------ Головний сайдбар -->
+				<aside class="sidebar menu">
+					<ul class="menu__menu-list">
+						<li template-button="applications" class="menu__menu-item menu-active-button template-switch-button menu-apps-button"><a href="#">Заявки</a></li>
+						<li template-button="vacancies" class="menu__menu-item template-switch-button menu-vacancies-button"><a href="#">Вакансії</a></li>
+						<li template-button="analytics" class="menu__menu-item template-switch-button menu-analytics-button"><a href="#">Аналітика</a></li>
+					</ul>
+				</aside>
+				<!------------------------------------------------------------------------------------------------------------------------- Фільтр заявок кандидатів -->
+				<aside template-name="applications" class="sidebar applications-filter open-filter template">
+					<div class="applications-filter__title-container">
+						<div class="applications-filter__left-container">
+							<div class="applications-filter__sort sort">
+								<h3 class="sort__title">Сортувати за:</h3>
+								<select class="sort__select applications-filter__sort-select">
+									<option value="new" class="sort__category applications-filter__sort-category">Найновіші</option>
+									<option value="old" class="sort__category applications-filter__sort-category">За віком (від найбільшого)</option>
+									<option value="young" class="sort__category applications-filter__sort-category">За віком (від найменшого)</option>
+								</select>
+							</div>
+							<div class="applications-filter__search search">
+								<h3 class="search__title">
+									Пошук:
+								</h3>
+								<div class="search__input-container">
+									<input type="text" class="search__input applications-filter__search-input">
+									<!-- <button class="search__button applications-filter__search-button">
+						<img src="img/icons/search-icon.png" alt="search icon">
+					</button> -->
+								</div>
+								<div class="search__input-eyes _hidden">👀</div>
+							</div>
+						</div>
+						<div class="applications-filter__filter-title-container">
+							<h2 class="applications-filter__title">
+								Фільтр
+							</h2>
+							<button class="applications-filter__close-button">
+								<img src="img/icons/minus-in-circle.png" alt="minus button" class="applications-filter__minus-icon">
+								<img src="img/icons/minus-in-circle.png" alt="minus button" class="applications-filter__second-minus-icon rotate-icon">
+							</button>
+						</div>
+					</div>
+					<div class="applications-filter__parametrs-container parametrs null-height">
+						<div class="applications-filter__filter">
+							<div class="applications-filter__kinds kinds-app">
+								<h3 class="kinds-app__title">
+									Напрямок
+								</h3>
+								<div class="kinds-app__checkboxes-container">
+								</div>
+							</div>
+							<div class="applications-filter__search-app search-app">
+								<h3 class="search-app__title">
+									Вакансія
+								</h3>
+								<select class="search-app__select">
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="applications-filter__bottom-container null-height">
+						<button class="applications-filter__reset-button">
+							<span>❌</span> Скинути
+						</button>
+						<button class="applications-filter__result-button">
+							<span>✅</span> Фільтрувати
+						</button>
+					</div>
+				</aside>
+				<!------------------------------------------------------------------------------------------------------------------------- Фільтр вакансій -->
+				<aside template-name="vacancies" class="sidebar vacancies-filter open-filter template hidden-template">
+					<div class="vacancies-filter__title-container">
+						<div class="vacancies-filter__left-container">
+							<div class="vacancies-filter__sort sort-vacancies">
+								<h3 class="sort-vacancies__title">Напрямок:</h3>
+								<div class="sort-vacancies__checkboxes-container">
+								</div>
+							</div>
+							<div class="vacancies-filter__search search-vacancies">
+								<h3 class="search-vacancies__title">
+									Пошук:
+								</h3>
+								<div class="search-vacancies__input-container">
+									<input type="text" class="search-vacancies__input">
+									<!-- <button class="search__button">
+						<img src="img/icons/search-icon.png" alt="search icon">
+					</button> -->
+								</div>
+								<div class="search-vacancies__input-eyes _hidden">👀</div>
+							</div>
+						</div>
+						<button template-button="create-vacancy" class="vacancies-filter__add-vacancy add-vacancy-button template-switch-button">
+							<span>➕</span>
+							Додати вакансію
+						</button>
+					</div>
+				</aside>
+				<!------------------------------------------------------------------------------------------------------------------------- Шаблон з анкетами -->
+				<section template-name="applications" class="page__content applications template">
+					<div class="applications__table-result-container">
+					</div>
+				</section>
+				<!------------------------------------------------------------------------------------------------------------------------- Шаблон з вакансіями -->
+				<section template-name="vacancies" class="page__content vacancies hidden-template template">
+					<div class="vacancies__table-result-container">
+						<ul class="vacancies__table-title">
+							<li class="vacancies__table-title-item">
+								Створення
+							</li>
+							<li class="vacancies__table-title-item">
+								Назва
+							</li>
+							<li class="vacancies__table-title-item">
+								Напрямок
+							</li>
+							<li class="vacancies__table-title-item">
+								ID
+							</li>
+							<li class="vacancies__table-title-item">
+								🔗
+							</li>
+						</ul>
+
+						<ul class="vacancies__row">
+							<li class="vacancies__item">
+								28.12.2023
+							</li>
+							<li class="vacancies__item">
+								Менеджер/ка з комунікацій у відділ корпоративної соціальної відповідальності (КСВ)
+							</li>
+							<li class="vacancies__item">
+								Склад
+							</li>
+							<li class="vacancies__item">
+								1
+							</li>
+							<li class="vacancies__item">
+								<button class="vacancies__item-button">🔗</button>
+							</li>
+						</ul>
+
+						<ul class="vacancies__row">
+							<li class="vacancies__item">
+								28.12.2023
+							</li>
+							<li class="vacancies__item">
+								Менеджер/ка з комунікацій у відділ корпоративної соціальної відповідальності (КСВ)
+							</li>
+							<li class="vacancies__item">
+								Склад
+							</li>
+							<li class="vacancies__item">
+								1
+							</li>
+							<li class="vacancies__item">
+								<button class="vacancies__item-button">🔗</button>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<!------------------------------------------------------------------------------------------------------------------------- Шаблон аналітики -->
+				<section template-name="analytics" class="page__content analytics hidden-template template">
+
+				</section>
+				<!------------------------------------------------------------------------------------------------------------------------- Шаблон сторінки заявки -->
+				<section template-name="order" class="page__content order hidden-template template">
+					<div class="order__navigation-line">
+						<button template-button="applications" class="order__back-button template-switch-button back-button-style">
+							<span>←</span>
+							Назад
+						</button>
+					</div>
+					<div class="order__user-info">
+						<h3 class="order__user-title">
+							<span>👤</span>
+							<span class="order__user-title-text">Дані про користувача:</span>
+						</h3>
+						<ul class="order__user-info-list">
+							<li class="order__user-info-item">
+								<div class="order__user-info-item-title">• Дата створення користувача - </div>
+								<div class="order__user-info-item-data user-app-create"></div>
+							</li>
+							<li class="order__user-info-item">
+								<div class="order__user-info-item-title">• П.І.Б. користувача - </div>
+								<div class="order__user-info-item-data user-app-name"></div>
+							</li>
+							<li class="order__user-info-item">
+								<div class="order__user-info-item-title">• Телефон профілю в телеграм - </div>
+								<div class="order__user-info-item-data user-app-phone"></div>
+							</li>
+							<li class="order__user-info-item">
+								<div class="order__user-info-item-title">• Посилання на профіль в телеграм - </div>
+								<a href="" target="_blank" class="order__user-info-item-data user-app-tg-link user-app-tg-href"></a>
+								<span>🔗</span>
+							</li>
+						</ul>
+						<div class="order__user-bottom-line">
+							<button class="order__user-delete-button">
+								Видалити користувача
+							</button>
+							<button class="order__user-black-list-button">
+								В чорний список
+							</button>
+						</div>
+					</div>
+					<div class="order__application-info">
+						<div class="order__application-title-line">
+							<h3 class="order__application-title">
+								<span>🧾</span>
+								<span class="order__application-title-text">Дані про останню заявку:</span>
+							</h3>
+							<div class="order__application-info-item-active">
+								<div class="application-info-item-active-green"></div>
+								<div class="application-info-item-active-red"></div>
+								<div class="order__application-info-item-active-status">Заявка активна</div>
+							</div>
+						</div>
+						<ul class="order__application-info-list">
+							<li class="order__application-info-item">
+								<div class="order__application-info-item-title">• П.І.Б. - </div>
+								<div class="order__application-info-item-data order-app-name"></div>
+							</li>
+							<li class="order__application-info-item">
+								<div class="order__application-info-item-title">• Телефон - </div>
+								<div class="order__application-info-item-data order-app-phone"></div>
+							</li>
+							<li class="order__application-info-item">
+								<div class="order__application-info-item-title">• Населений пункт - </div>
+								<div class="order__application-info-item-data order-app-city"></div>
+							</li>
+							<li class="order__application-info-item">
+								<div class="order__application-info-item-title">• Дата народження - </div>
+								<div class="order__application-info-item-data order-app-date"></div>
+							</li>
+							<li class="order__application-info-item">
+								<div class="order__application-info-item-title">• Назва вакансії - </div>
+								<div class="order__application-info-item-data order-app-title"></div>
+							</li>
+							<li class="order__application-info-item">
+								<div class="order__application-info-item-title">• Напрямок - </div>
+								<div class="order__application-info-item-data order-app-kind"></div>
+							</li>
+							<li class="order__application-info-item">
+								<div class="order__application-info-item-title">• ID заявки - </div>
+								<div class="order__application-info-item-data order-app-id"></div>
+							</li>
+							<li class="order__application-info-item">
+								<div class="order__application-info-item-title">• Дата створення - </div>
+								<div class="order__application-info-item-data order-app-create"></div>
+							</li>
+							<li class="order__application-info-item">
+								<div class="order__application-info-item-title">• Резюме - </div>
+								<button class="order__application-info-resume-button-container">
+									<div class="order__application-info-item-data order-app-resume"></div>
+									<div class="order__application-download-resume">⇩</div>
+								</button>
+							</li>
+							<li class="order__application-info-item">
+								<div class="order__application-info-item-title">• Спосіб оцінювання - </div>
+								<div class="order__application-info-item-data order-app-rating-type">Тестування / Chat GPT</div>
+							</li>
+							<li class="order__application-info-item">
+								<div class="order__application-info-item-title">• Кількість балів / Висновок - </div>
+								<div class="order__application-info-item-data order-app-rating"></div>
+							</li>
+						</ul>
+						<div class="order__application-info-botom-line">
+							<button class="order__application-info-botom-line-delete-button">
+								Видалити заявку
+							</button>
+							<button class="order__application-info-botom-line-active-button">
+								Деактивувати заявку
+							</button>
+						</div>
+					</div>
+					<div class="order__application-info-comments">
+						<h3 class="order__application-info-comments-title">
+							<span>📝</span>
+							<span>Додаткові коментарі про користувача:</span>
+						</h3>
+						<div class="order__application-info-comments-text">
+							Коментарі відсутні
+						</div>
+						<textarea class="order__application-info-comments-textarea"></textarea>
+						<div class="order__application-info-comments-bottom-line">
+							<button class="order__application-info-comments-button">
+								Залишити коментар
+							</button>
+						</div>
+					</div>
+				</section>
+				<!------------------------------------------------------------------------------------------------------------------------- Шаблон сторінки вакансії -->
+				<section template-name="vacancy" class="page__content vacancy hidden-template template">
+					<div class="vacancy__navigation-line">
+						<button template-button="vacancies" class="vacancy__back-button template-switch-button back-button-style">
+							<span>←</span>
+							Назад
+						</button>
+					</div>
+					<div class="vacancy__user-info">
+						<div class="vacancy__top-line">
+							<h3 class="vacancy__user-title">
+								<span>📒</span>
+								<span class="vacancy__user-title-text">Інформація про вакансію:</span>
+							</h3>
+							<div class="vacancy__application-info-item-active">
+								<div class="vacancy-info-item-active-green"></div>
+								<div class="vacancy-info-item-active-red"></div>
+								<div class="vacancy__application-info-item-active-status">Вакансія активна</div>
+							</div>
+						</div>
+						<ul class="vacancy__user-info-list">
+							<li class="vacancy__user-info-item">
+								<div class="vacancy__user-info-item-title">• Дата створення - </div>
+								<div class="vacancy__user-info-item-data vacancy-create"></div>
+							</li>
+							<li class="vacancy__user-info-item">
+								<div class="vacancy__user-info-item-title">• Останнє редагування - </div>
+								<div class="vacancy__user-info-item-data vacancy-edit"></div>
+							</li>
+							<li class="vacancy__user-info-item">
+								<div class="vacancy__user-info-item-title">• Назва вакансії - </div>
+								<div class="vacancy__user-info-item-data vacancy-name"></div>
+							</li>
+							<li class="vacancy__user-info-item">
+								<div class="vacancy__user-info-item-title">• Напрямок - </div>
+								<div class="vacancy__user-info-item-data vacancy-kind"></div>
+							</li>
+							<li class="vacancy__user-info-item">
+								<div class="vacancy__user-info-item-title">• ID - </div>
+								<div class="vacancy__user-info-item-data vacancy-id"></div>
+							</li>
+							<li class="vacancy__user-info-item vacancy-description-container">
+								<div class="vacancy__user-info-item-title">• Опис вакансії: </div>
+								<div class="vacancy__user-info-item-data vacancy-description"></div>
+							</li>
+						</ul>
+						<div class="vacancy__user-bottom-line">
+							<button class="vacancy__user-delete-button">
+								Видалити вакансію
+							</button>
+							<button class="vacancy__user-black-list-button">
+								Деактивувати вакансію
+							</button>
+						</div>
+					</div>
+
+				</section>
+				<!------------------------------------------------------------------------------------------------------------------------- Сторінка створення вакансії -->
+				<section template-name="create-vacancy" class="page__content create-vacancy hidden-template template">
+					<div class="create-vacancy__navigation-line">
+						<button template-button="vacancies" class="create-vacancy__back-button template-switch-button back-button-style">
+							<span>←</span>
+							Назад
+						</button>
+					</div>
+					<div class="create-vacancy__info-container">
+						<h3 class="create-vacancy__title">
+							Заповніть інформацію про вакансію:
+						</h3>
+						<div class="create-vacancy__fields-container">
+							<div class="create-vacancy__field-container">
+								<h4 class="create-vacancy__field-title">Назва вакансії:</h4>
+								<input type="text" class="create-vacancy__field create-vacancy-name-input">
+							</div>
+							<div class="create-vacancy-radio-buttons-container">
+								<h4 class="create-vacancy-radio-buttons-container__field-title">Напрямок вакансії:</h4>
+								<div class="create-vacancy-radio-buttons-container__items-container">
+									<label class="create-vacancy-radio-buttons-container__item">
+										<span>Офіс</span>
+										<input type="radio" id="office" name="kind" class="create-vacancy__field">
+									</label>
+									<label class="create-vacancy-radio-buttons-container__item">
+										<span>Магазин</span>
+										<input type="radio" id="shop" name="kind" class="create-vacancy__field">
+									</label>
+									<label for="stock" class="create-vacancy-radio-buttons-container__item">
+										<span>Склад</span>
+										<input type="radio" id="stock" name="kind" class="create-vacancy__field">
+									</label>
+								</div>
+							</div>
+							<div class="create-vacancy__description">
+								<!-- <textarea class="create-vacancy__description-textarea" name="" id="" cols="30" rows="10"></textarea> -->
+								<div class="editorjs" id="editorjs"></div>
+							</div>
+						</div>
+						<div class="create-vacancy__button-container">
+							<button class="create-vacancy__send-button">
+								Зберегти
+							</button>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+		<script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest?_v=20240318122220"></script>
+		<!------------------------------------------------------------------------------------------------------------------------ Футер з пагінацією -->
+		<footer class="footer">
+			<div class="footer__container">
+				<div class="footer__pagination pagination pagination-applications">
+				</div>
+				<div class="footer__pagination pagination pagination-vacancies _hidden">
+				</div>
+			</div>
+		</footer>
+	</div>
+	<script src="js/app.min.js?_v=20240318122220"></script>
+</body>
+
+</html>
