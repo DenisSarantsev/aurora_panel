@@ -195,13 +195,16 @@
 		}
 	}
 	&__application-info-comments-text {
-
+		background-color: #f7f7f7;
+		padding: toRem(10);
+		border-radius: toRem(10);
+		border: 1px dashed rgba($color: #000000, $alpha: 0.3);
 	}
 	&__application-info-comments-textarea {
 		border-radius: $blocksBorderRadius;
 		min-height: toRem(90);
 		outline: none;
-		padding: toRem(5);
+		padding: toRem(10);
 		border: 1px solid transparent;
 		&:focus {
 			border: 1px solid $mainYellow;

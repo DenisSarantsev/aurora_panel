@@ -16,5 +16,5 @@ export const removePreloaderInKindsList = () => {
 	let preloaderContainer = document.querySelector(".preloader-in-widget");
 	setTimeout(function() {
 		preloaderContainer.classList.add("preloader-hidden");
-	}, 600)
+	}, 700)
 }

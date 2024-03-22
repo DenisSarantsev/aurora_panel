@@ -1,4 +1,12 @@
 // ------------------------------------------------------------------------------ Функции для отображения вакансий
+// ----------> Возвращаем текущий статус активности (цвет маркера)
+const addCurrentActiveVacanciesMarker = (vacancy) => {
+	if ( vacancy.is_active === true ) {
+		return "va-green"
+	} else {
+		return "va-red"
+	}
+}
 // ----------> Отображаем чекбоксы в шаблоне вакансий
 export function addKindCheckboxesInVacanciesFilter(fetchVacanciesData) {
 	return new Promise((resolve, reject) => {
@@ -88,10 +96,11 @@ export const addVacanciesToTable = (vacancies) => {
 		`
 	)
 	for ( let vacancy of vacancies ) {
+
 		vacanciesTableContainer.insertAdjacentHTML("beforeend", 
 			`
 				<ul class="vacancies__row">
-					<li class="vacancies__item">${vacancy.create_at}</li>
+					<li class="vacancies__item vacancies-create-at-item"><div class="vacancies-active-marker ${addCurrentActiveVacanciesMarker(vacancy)}"></div><div>${vacancy.create_at}</div></li>
 					<li class="vacancies__item">${vacancy.title}</li>
 					<li class="vacancies__item">${vacancy.kind}</li>
 					<li class="vacancies__item">${vacancy._id}</li>

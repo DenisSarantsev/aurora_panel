@@ -21,7 +21,62 @@ export const writeUserInformationToAppPage = (user) => {
 
 	document.querySelector(".user-app-tg-link").textContent = user.username;
 	document.querySelector(".user-app-tg-href").setAttribute("href", `https://t.me/${user.username}`);
+	addCommentToApplicationPage(user);
+	writeNewCommentToAllComments(user);
 }
+
+// --------------> Загружаем файл на компьютер по клику
+export const downloadResumeFile = (data) => {
+	let resumeName = data.order.file_name;
+	let resumeString = data.order.file_data;
+	let downloadResumeButton = document.querySelector(".order-app-resume");
+	downloadResumeButton.addEventListener("click", () => {
+
+	// Разбираем строку Base64 в массив байтов
+	let binaryString = atob(resumeString);
+	// Разбиваем строку на массив чисел
+	let numbers = binaryString.split(',').map(Number);
+	// Создаем Uint8Array из массива чисел
+	let uintArray = new Uint8Array(numbers);
+	// Создаем Blob из массива Uint8Array
+	let blob = new Blob([uintArray], { type: 'application/octet-stream' });
+	// Создаем ссылку для скачивания файла
+	let link = document.createElement('a');
+	link.href = URL.createObjectURL(blob);
+	console.log(link.href)
+	link.download = `${resumeName}`; // Указываем имя файла для скачивания
+	link.click(); // Автоматически запускаем скачивание файла
+	})
+}
+
+// Вывод комментариев на странице заявки
+const addCommentToApplicationPage = (user) => {
+	const commentsArea = document.querySelector(".order__application-info-comments-text");
+	commentsArea.innerHTML = '';
+	commentsArea.insertAdjacentHTML("beforeend", `${replaceSymbolsToTags(user.info)}`)
+}
+
+// Функция, которая заменяет символы на теги для форматирования
+const replaceSymbolsToTags = (text) => {
+	return text
+			.replace(/\r\n/g, " ")  // Заменяем символы \r\n строки на пробел
+			.replace(/\n20/g, "<br><br>20")  // Заменяем символ переноса строки на HTML-тег <br>
+}
+
+// Запись новой информации в комментарии
+const writeNewCommentToAllComments = (user) => {
+	const sendButton = document.querySelector(".order__application-info-comments-button");
+	sendButton.addEventListener("click", () => {
+		const newText = document.querySelector(".order__application-info-comments-textarea").value;
+		const oldText = user.info;
+		const sendText = oldText + newText;
+		console.log(sendText)
+	})
+}
+
+
+
+
 
 // Ставим статус для заявки (активна / не активна)
 const addStatusToOrderPage = (order) => {
@@ -68,26 +123,3 @@ const addRatingToOrderPage = (order) => {
 	}
 }
 
-// Загружаем файл на компьютер по клику
-export const downloadResumeFile = (data) => {
-	let resumeName = data.order.file_name;
-	let resumeString = data.order.file_data;
-	let downloadResumeButton = document.querySelector(".order-app-resume");
-	downloadResumeButton.addEventListener("click", () => {
-
-	// Разбираем строку Base64 в массив байтов
-	let binaryString = atob(resumeString);
-	// Разбиваем строку на массив чисел
-	let numbers = binaryString.split(',').map(Number);
-	// Создаем Uint8Array из массива чисел
-	let uintArray = new Uint8Array(numbers);
-	// Создаем Blob из массива Uint8Array
-	let blob = new Blob([uintArray], { type: 'application/octet-stream' });
-	// Создаем ссылку для скачивания файла
-	let link = document.createElement('a');
-	link.href = URL.createObjectURL(blob);
-	console.log(link.href)
-	link.download = `${resumeName}`; // Указываем имя файла для скачивания
-	link.click(); // Автоматически запускаем скачивание файла
-	})
-}

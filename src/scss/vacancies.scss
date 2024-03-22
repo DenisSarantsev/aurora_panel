@@ -63,3 +63,23 @@
 	&__vacancies-button {
 	}
 }
+
+.vacancies-create-at-item {
+	display: flex;
+	justify-content: flex-start;
+	gap: toRem(8);
+	font-size: toRem(12);
+	padding-left: toRem(5);
+}
+.vacancies-active-marker {
+	height: toRem(3);
+	width: toRem(3);
+	border-radius: 50%;
+	padding: toRem(4);
+}
+.va-green {
+	background-color: rgb(0, 255, 0);
+}
+.va-red {
+	background-color: rgb(255, 56, 56);
+}

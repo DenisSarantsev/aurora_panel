@@ -78,7 +78,7 @@
         let preloaderContainer = document.querySelector(".preloader-in-widget");
         setTimeout((function() {
             preloaderContainer.classList.add("preloader-hidden");
-        }), 600);
+        }), 700);
     };
     async function fetchOrdersData() {
         const apiUrl = "https://fastapi-avrora-hr.fly.dev/path/admin/api/super-admin/orders/210325718";
@@ -114,6 +114,7 @@
             const response = await fetch(apiUrl, requestOptions);
             if (!response.ok) throw new Error(`Ошибка HTTP: ${response.status}`);
             const data = await response.json();
+            console.log(data);
             return data;
         } catch (error) {
             console.error("Ошибка запроса:", error);
@@ -199,6 +200,41 @@
         document.querySelector(".user-app-phone").textContent = user.phone_number;
         document.querySelector(".user-app-tg-link").textContent = user.username;
         document.querySelector(".user-app-tg-href").setAttribute("href", `https://t.me/${user.username}`);
+        addCommentToApplicationPage(user);
+        writeNewCommentToAllComments(user);
+    };
+    const downloadResumeFile = data => {
+        let resumeName = data.order.file_name;
+        let resumeString = data.order.file_data;
+        let downloadResumeButton = document.querySelector(".order-app-resume");
+        downloadResumeButton.addEventListener("click", (() => {
+            let binaryString = atob(resumeString);
+            let numbers = binaryString.split(",").map(Number);
+            let uintArray = new Uint8Array(numbers);
+            let blob = new Blob([ uintArray ], {
+                type: "application/octet-stream"
+            });
+            let link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            console.log(link.href);
+            link.download = `${resumeName}`;
+            link.click();
+        }));
+    };
+    const addCommentToApplicationPage = user => {
+        const commentsArea = document.querySelector(".order__application-info-comments-text");
+        commentsArea.innerHTML = "";
+        commentsArea.insertAdjacentHTML("beforeend", `${replaceSymbolsToTags(user.info)}`);
+    };
+    const replaceSymbolsToTags = text => text.replace(/\r\n/g, " ").replace(/\n20/g, "<br><br>20");
+    const writeNewCommentToAllComments = user => {
+        const sendButton = document.querySelector(".order__application-info-comments-button");
+        sendButton.addEventListener("click", (() => {
+            const newText = document.querySelector(".order__application-info-comments-textarea").value;
+            const oldText = user.info;
+            const sendText = oldText + newText;
+            console.log(sendText);
+        }));
     };
     const addStatusToOrderPage = order => {
         const orderStatus = document.querySelector(".order__application-info-item-active-status");
@@ -238,24 +274,6 @@
             ratingType.textContent = "Оцінка за к-стю правильних відповідей";
             rating.textContent = order.points;
         }
-    };
-    const downloadResumeFile = data => {
-        let resumeName = data.order.file_name;
-        let resumeString = data.order.file_data;
-        let downloadResumeButton = document.querySelector(".order-app-resume");
-        downloadResumeButton.addEventListener("click", (() => {
-            let binaryString = atob(resumeString);
-            let numbers = binaryString.split(",").map(Number);
-            let uintArray = new Uint8Array(numbers);
-            let blob = new Blob([ uintArray ], {
-                type: "application/octet-stream"
-            });
-            let link = document.createElement("a");
-            link.href = URL.createObjectURL(blob);
-            console.log(link.href);
-            link.download = `${resumeName}`;
-            link.click();
-        }));
     };
     const addInformationToAppPage = (userId, userTelegramId) => {
         returnPromice(userId, userTelegramId).then((data => {
@@ -587,6 +605,9 @@
             runFetchWithMainChain();
         }));
     }));
+    const addCurrentActiveVacanciesMarker = vacancy => {
+        if (vacancy.is_active === true) return "va-green"; else return "va-red";
+    };
     function addKindCheckboxesInVacanciesFilter(fetchVacanciesData) {
         return new Promise(((resolve, reject) => {
             let allCheckboxes;
@@ -627,7 +648,7 @@
         const vacanciesTableContainer = document.querySelector(".vacancies__table-result-container");
         vacanciesTableContainer.innerHTML = "";
         vacanciesTableContainer.insertAdjacentHTML("beforeend", `\n\t\t\t<ul class="vacancies__table-title">\n\t\t\t\t<li class="vacancies__table-title-item">Створення</li>\n\t\t\t\t<li class="vacancies__table-title-item">Назва</li>\n\t\t\t\t<li class="vacancies__table-title-item">Напрямок</li>\n\t\t\t\t<li class="vacancies__table-title-item">ID</li>\n\t\t\t\t<li class="vacancies__table-title-item">🔗</li>\n\t\t\t</ul>\n\t\t`);
-        for (let vacancy of vacancies) vacanciesTableContainer.insertAdjacentHTML("beforeend", `\n\t\t\t\t<ul class="vacancies__row">\n\t\t\t\t\t<li class="vacancies__item">${vacancy.create_at}</li>\n\t\t\t\t\t<li class="vacancies__item">${vacancy.title}</li>\n\t\t\t\t\t<li class="vacancies__item">${vacancy.kind}</li>\n\t\t\t\t\t<li class="vacancies__item">${vacancy._id}</li>\n\t\t\t\t\t<li class="vacancies__item vacancy template-switch-button vacancy-application-button" template-button="vacancy" vacancy-id="${vacancy._id}"><button class="vacancies__item-button">🔗</button></li>\n\t\t\t\t</ul>\n\t\t\t`);
+        for (let vacancy of vacancies) vacanciesTableContainer.insertAdjacentHTML("beforeend", `\n\t\t\t\t<ul class="vacancies__row">\n\t\t\t\t\t<li class="vacancies__item vacancies-create-at-item"><div class="vacancies-active-marker ${addCurrentActiveVacanciesMarker(vacancy)}"></div><div>${vacancy.create_at}</div></li>\n\t\t\t\t\t<li class="vacancies__item">${vacancy.title}</li>\n\t\t\t\t\t<li class="vacancies__item">${vacancy.kind}</li>\n\t\t\t\t\t<li class="vacancies__item">${vacancy._id}</li>\n\t\t\t\t\t<li class="vacancies__item vacancy template-switch-button vacancy-application-button" template-button="vacancy" vacancy-id="${vacancy._id}"><button class="vacancies__item-button">🔗</button></li>\n\t\t\t\t</ul>\n\t\t\t`);
         return true;
     };
     const runFetchVacanciesWithMainChain = () => {

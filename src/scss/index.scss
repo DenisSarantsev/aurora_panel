@@ -24,14 +24,19 @@
 
   &__button {
     padding: 10px 20px;
-    background-color: #007bff; // Синий цвет кнопки
-    color: #fff; // Белый цвет текста кнопки
+    background-color: $mainYellow; // Синий цвет кнопки
+    color: #000; // Белый цвет текста кнопки
     border: none;
     border-radius: 5px; // Закругление краев
     cursor: pointer;
+		border: 1px solid transparent;
 
     &:hover {
-      background-color: #0056b3; // Изменение цвета при наведении
+      background-color: $lightYellow; // Изменение цвета при наведении
+			outline: none;
     }
+		&:focus {
+			outline: none;
+		}
   }
 }
