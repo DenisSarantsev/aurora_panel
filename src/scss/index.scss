@@ -1,0 +1,37 @@
+
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0; // Серый цвет фона
+    border-radius: 10px; // Закругление краев
+  }
+
+  &__input-field {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc; // Серый цвет рамки
+    border-radius: 5px; // Закругление краев
+    width: 200px; // Ширина полей ввода
+  }
+
+  &__button {
+    padding: 10px 20px;
+    background-color: #007bff; // Синий цвет кнопки
+    color: #fff; // Белый цвет текста кнопки
+    border: none;
+    border-radius: 5px; // Закругление краев
+    cursor: pointer;
+
+    &:hover {
+      background-color: #0056b3; // Изменение цвета при наведении
+    }
+  }
+}

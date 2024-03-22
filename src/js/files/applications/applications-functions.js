@@ -22,8 +22,8 @@ const findAge = (birthdate) => {
 }
 // ----------> Определяем статус и выводим значение
 const addStatusToTable = (status) => {
-	if ( status === null ) {
-		return "Новий"
+	if ( status ) {
+		return status;
 	}
 }
 // ----------> Добавляем галочку, если есть резюме
@@ -51,6 +51,14 @@ const comparsionOrdersByYoungAge = (a, b) => {
 	let ageA = findAge(a.birthday);
 	let ageB = findAge(b.birthday);
 	return ageA - ageB;
+}
+// -------------------------------------------------------------------------- Определяем, активна ли заявка и включаем нужный маркер
+const addCurrentActiveMarker = (order) => {
+	if ( order.is_active === true ) {
+		return "am-green"
+	} else {
+		return "am-red"
+	}
 }
 // ------------------------------------------------------------------------ Функции для создания полей фильтра
 // ----------> Создаем галочки выбора чекбоксов в фильтре кандидатов
@@ -264,7 +272,7 @@ export const addOrdersToTable = (orders, ordersOnPage) => {
 			tableContainer.insertAdjacentHTML("beforeend", 
 				`
 					<ul page-number="${pagesCounterValue}" class="applications__row">
-						<li class="applications__item">${order.create_at}</li>
+						<li class="applications__item applications-create-at-item"><div class="applications-active-marker ${addCurrentActiveMarker(order)}"></div><div>${order.create_at}</div></li>
 						<li class="applications__item">${order.name}</li>
 						<li class="applications__item">${findAge(order.birthday)}</li>
 						<li class="applications__item">${order.city}</li>

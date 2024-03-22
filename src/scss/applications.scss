@@ -94,3 +94,22 @@
 .row-padding {
 	padding: toRem(10);
 }
+
+.applications-create-at-item {
+	display: flex;
+	font-size: toRem(12);
+}
+
+.applications-active-marker {
+	height: toRem(3);
+	width: toRem(3);
+	border-radius: 50%;
+	padding: toRem(4);
+}
+
+.am-green {
+	background-color: rgb(0, 255, 0);
+}
+.am-red {
+	background-color: rgb(255, 56, 56);
+}

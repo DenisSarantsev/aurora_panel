@@ -67,3 +67,27 @@ const addRatingToOrderPage = (order) => {
 		rating.textContent = order.points;
 	}
 }
+
+// Загружаем файл на компьютер по клику
+export const downloadResumeFile = (data) => {
+	let resumeName = data.order.file_name;
+	let resumeString = data.order.file_data;
+	let downloadResumeButton = document.querySelector(".order-app-resume");
+	downloadResumeButton.addEventListener("click", () => {
+
+	// Разбираем строку Base64 в массив байтов
+	let binaryString = atob(resumeString);
+	// Разбиваем строку на массив чисел
+	let numbers = binaryString.split(',').map(Number);
+	// Создаем Uint8Array из массива чисел
+	let uintArray = new Uint8Array(numbers);
+	// Создаем Blob из массива Uint8Array
+	let blob = new Blob([uintArray], { type: 'application/octet-stream' });
+	// Создаем ссылку для скачивания файла
+	let link = document.createElement('a');
+	link.href = URL.createObjectURL(blob);
+	console.log(link.href)
+	link.download = `${resumeName}`; // Указываем имя файла для скачивания
+	link.click(); // Автоматически запускаем скачивание файла
+	})
+}

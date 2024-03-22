@@ -67,6 +67,19 @@
             thirdBlock.classList.remove("null-height");
         }
     };
+    const addPreloaderInKindsList = () => {
+        let preloaderContainer = document.querySelector(".preloader-in-widget");
+        new Promise(((resolve, reject) => {
+            resolve();
+        })).then(preloaderContainer.classList.remove("preloader-hidden"));
+    };
+    addPreloaderInKindsList();
+    const removePreloaderInKindsList = () => {
+        let preloaderContainer = document.querySelector(".preloader-in-widget");
+        setTimeout((function() {
+            preloaderContainer.classList.add("preloader-hidden");
+        }), 600);
+    };
     async function fetchOrdersData() {
         const apiUrl = "https://fastapi-avrora-hr.fly.dev/path/admin/api/super-admin/orders/210325718";
         const requestOptions = {
@@ -80,6 +93,7 @@
             const response = await fetch(apiUrl, requestOptions);
             if (!response.ok) throw new Error(`Ошибка HTTP: ${response.status}`);
             const data = await response.json();
+            console.log(data);
             return data.orders;
         } catch (error) {
             console.error("Ошибка запроса:", error);
@@ -96,6 +110,7 @@
             }
         };
         try {
+            addPreloaderInKindsList();
             const response = await fetch(apiUrl, requestOptions);
             if (!response.ok) throw new Error(`Ошибка HTTP: ${response.status}`);
             const data = await response.json();
@@ -138,6 +153,7 @@
             const response = await fetch(apiUrl, requestOptions);
             if (!response.ok) throw new Error(`Ошибка HTTP: ${response.status}`);
             const data = await response.json();
+            console.log(data);
             return data;
         } catch (error) {
             console.error("Ошибка запроса:", error);
@@ -157,12 +173,189 @@
             const response = await fetch(apiUrl, requestOptions);
             if (!response.ok) throw new Error(`Ошибка HTTP: ${response.status}`);
             const data = await response.json();
+            console.log(data);
             return data;
         } catch (error) {
             console.error("Ошибка запроса:", error);
             throw error;
         }
     }
+    const writeOrderInformationToAppPage = order => {
+        document.querySelector(".order-app-name").textContent = order.name;
+        document.querySelector(".order-app-phone").textContent = order.feedback_phone;
+        document.querySelector(".order-app-city").textContent = order.city;
+        document.querySelector(".order-app-date").textContent = order.birthday;
+        document.querySelector(".order-app-title").textContent = order.title;
+        document.querySelector(".order-app-kind").textContent = order.kind;
+        document.querySelector(".order-app-id").textContent = order._id;
+        document.querySelector(".order-app-create").textContent = order.create_at;
+        addStatusToOrderPage(order);
+        addInfoAboutResume(order);
+        addRatingToOrderPage(order);
+    };
+    const writeUserInformationToAppPage = user => {
+        document.querySelector(".user-app-create").textContent = user.created_at;
+        document.querySelector(".user-app-name").textContent = user.first_name;
+        document.querySelector(".user-app-phone").textContent = user.phone_number;
+        document.querySelector(".user-app-tg-link").textContent = user.username;
+        document.querySelector(".user-app-tg-href").setAttribute("href", `https://t.me/${user.username}`);
+    };
+    const addStatusToOrderPage = order => {
+        const orderStatus = document.querySelector(".order__application-info-item-active-status");
+        const greenCircle = document.querySelector(".application-info-item-active-green");
+        const redCircle = document.querySelector(".application-info-item-active-red");
+        if (order.is_active === true) {
+            redCircle.classList.add("_hidden");
+            greenCircle.classList.remove("_hidden");
+            orderStatus.innerHTML = "Заявка активна";
+        } else {
+            redCircle.classList.remove("_hidden");
+            greenCircle.classList.add("_hidden");
+            orderStatus.innerHTML = "Заявка не активна";
+        }
+    };
+    const addInfoAboutResume = order => {
+        const buttonContainer = document.querySelector(".order__application-info-resume-button-container");
+        const downloadButton = document.querySelector(".order__application-download-resume");
+        const resumeText = document.querySelector(".order-app-resume");
+        if (order.file_name !== null && order.file_name !== "") {
+            resumeText.textContent = order.file_name;
+            buttonContainer.classList.add("color-blue");
+            downloadButton.classList.remove("_hidden");
+        } else {
+            resumeText.textContent = "Відсутнє";
+            buttonContainer.classList.remove("color-blue");
+            downloadButton.classList.add("_hidden");
+        }
+    };
+    const addRatingToOrderPage = order => {
+        const ratingType = document.querySelector(".order-app-rating-type");
+        const rating = document.querySelector(".order-app-rating");
+        if (order.qualities !== "" && order.qualities !== null) {
+            ratingType.textContent = "Оцінка за допомогою Chat GPT";
+            rating.textContent = order.qualities;
+        } else if (order.points !== "" && order.points !== null) {
+            ratingType.textContent = "Оцінка за к-стю правильних відповідей";
+            rating.textContent = order.points;
+        }
+    };
+    const downloadResumeFile = data => {
+        let resumeName = data.order.file_name;
+        let resumeString = data.order.file_data;
+        let downloadResumeButton = document.querySelector(".order-app-resume");
+        downloadResumeButton.addEventListener("click", (() => {
+            let binaryString = atob(resumeString);
+            let numbers = binaryString.split(",").map(Number);
+            let uintArray = new Uint8Array(numbers);
+            let blob = new Blob([ uintArray ], {
+                type: "application/octet-stream"
+            });
+            let link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            console.log(link.href);
+            link.download = `${resumeName}`;
+            link.click();
+        }));
+    };
+    const addInformationToAppPage = (userId, userTelegramId) => {
+        returnPromice(userId, userTelegramId).then((data => {
+            const orderId = data.userId;
+            const userTelegramId = data.userTelegramId;
+            const result = {
+                orderId,
+                userTelegramId
+            };
+            return result;
+        })).then((result => {
+            fetchOrderData(result.orderId).then((data => {
+                writeOrderInformationToAppPage(data.order);
+                downloadResumeFile(data);
+            }));
+            fetchUserData(result.userTelegramId).then((data => writeUserInformationToAppPage(data.user)));
+        })).then(removePreloaderInKindsList());
+    };
+    async function returnPromice(userId, userTelegramId) {
+        const data = {
+            userId,
+            userTelegramId
+        };
+        return data;
+    }
+    const writeDataToVacancyPage = vacancy => {
+        console.log(vacancy._id);
+        document.querySelector(".vacancy-create").textContent = vacancy.create_at;
+        document.querySelector(".vacancy-edit").textContent = vacancy.change_at;
+        document.querySelector(".vacancy-name").textContent = vacancy.title;
+        document.querySelector(".vacancy-kind").textContent = vacancy.kind;
+        document.querySelector(".vacancy-id").textContent = vacancy._id;
+        document.querySelector(".vacancy-description").innerHTML = cleanTagsStylesAndAttributes(vacancy.description_html);
+        addStatusToVacancy(vacancy);
+    };
+    const addStatusToVacancy = vacancy => {
+        const vacancyStatus = document.querySelector(".vacancy__application-info-item-active-status");
+        const greenCircle = document.querySelector(".vacancy-info-item-active-green");
+        const redCircle = document.querySelector(".vacancy-info-item-active-red");
+        if (vacancy.is_active === true) {
+            redCircle.classList.add("_hidden");
+            greenCircle.classList.remove("_hidden");
+            vacancyStatus.innerHTML = "Вакансія активна";
+        } else {
+            redCircle.classList.remove("_hidden");
+            greenCircle.classList.add("_hidden");
+            vacancyStatus.innerHTML = "Вакансія не активна";
+        }
+    };
+    function cleanTagsStylesAndAttributes(data) {
+        let doc = (new DOMParser).parseFromString(data, "text/html");
+        function removeStyles(element) {
+            element.removeAttribute("style");
+            element.removeAttribute("font-family");
+            for (let child of element.children) removeStyles(child);
+        }
+        removeStyles(doc.body);
+        return doc.documentElement.outerHTML;
+    }
+    const addInformationToVacancyPage = vacancyId => {
+        fetchVacancyData(vacancyId).then((data => {
+            writeDataToVacancyPage(data.vacancy);
+            removePreloaderInKindsList();
+        }));
+    };
+    const showOrHiddenPagination = button => {
+        let buttonTemplateAttribute = button.getAttribute("template-button");
+        const allPaginations = document.querySelectorAll(".pagination");
+        for (let pagination of allPaginations) pagination.style.display = "none";
+        if (document.querySelector(`.pagination-${buttonTemplateAttribute}`)) {
+            const removeElement = document.querySelector(`.pagination-${buttonTemplateAttribute}`);
+            removeElement.style.display = "flex";
+        }
+    };
+    const showAndHiddenTemplates = button => {
+        const allTemplates = document.querySelectorAll(".template");
+        let buttonTemplateAttribute = button.getAttribute("template-button");
+        for (let template of allTemplates) if (template.getAttribute("template-name") !== buttonTemplateAttribute) template.classList.add("hidden-template"); else template.classList.remove("hidden-template");
+        if (button.classList.contains("menu__menu-item")) showOrHiddenPagination(button);
+        if (button.classList.contains("user-application-button")) {
+            addPreloaderInKindsList();
+            addInformationToAppPage(button.getAttribute("order-id"), button.getAttribute("user-telegram-id"));
+        }
+        if (button.classList.contains("vacancy-application-button")) {
+            addPreloaderInKindsList();
+            addInformationToVacancyPage(button.getAttribute("vacancy-id"));
+        }
+        if (button.classList.contains("order__back-button")) document.querySelector(".menu-apps-button").classList.add("menu-active-button");
+        if (button.classList.contains("vacancy__back-button")) document.querySelector(".menu-vacancies-button").classList.add("menu-active-button");
+        if (button.classList.contains("create-vacancy__back-button")) document.querySelector(".menu-vacancies-button").classList.add("menu-active-button");
+    };
+    const findAllTemplates = () => {
+        const allSwitchButtons = document.querySelectorAll(".template-switch-button");
+        const allMenuButtons = document.querySelectorAll(".menu__menu-item");
+        for (let button of allSwitchButtons) button.addEventListener("click", (e => {
+            for (let item of allMenuButtons) item.classList.remove("menu-active-button");
+            if (e.currentTarget.classList.contains("menu__menu-item")) e.currentTarget.classList.add("menu-active-button");
+            showAndHiddenTemplates(e.currentTarget);
+        }));
+    };
     const getCheckedKinds = () => {
         const allKindsCheckboxes = document.querySelectorAll(".kinds-app__checkbox-input");
         let actualKind = [];
@@ -178,7 +371,7 @@
         return ageInYears;
     };
     const addStatusToTable = status => {
-        if (status === null) return "Новий";
+        if (status) return status;
     };
     const addResumeMarker = data => {
         if (data === null) return ""; else return "📎";
@@ -197,6 +390,9 @@
         let ageA = findAge(a.birthday);
         let ageB = findAge(b.birthday);
         return ageA - ageB;
+    };
+    const addCurrentActiveMarker = order => {
+        if (order.is_active === true) return "am-green"; else return "am-red";
     };
     async function addKindCheckboxesInApplicationsFilter(fetchVacanciesData) {
         return new Promise(((resolve, reject) => {
@@ -289,7 +485,7 @@
         let ordersOnPageCounter = 0;
         let pagesCounterValue = 1;
         for (let order of orders) if (ordersOnPageCounter < ordersOnPage) {
-            tableContainer.insertAdjacentHTML("beforeend", `\n\t\t\t\t\t<ul page-number="${pagesCounterValue}" class="applications__row">\n\t\t\t\t\t\t<li class="applications__item">${order.create_at}</li>\n\t\t\t\t\t\t<li class="applications__item">${order.name}</li>\n\t\t\t\t\t\t<li class="applications__item">${findAge(order.birthday)}</li>\n\t\t\t\t\t\t<li class="applications__item">${order.city}</li>\n\t\t\t\t\t\t<li class="applications__item">${order.feedback_phone}</li>\n\t\t\t\t\t\t<li class="applications__item">${order.kind}</li>\n\t\t\t\t\t\t<li class="applications__item">${order.title}</li>\n\t\t\t\t\t\t<li class="applications__item">${addStatusToTable(order.status)}</li>\n\t\t\t\t\t\t<li class="applications__item">${addResumeMarker(order.file_name)}</li>\n\t\t\t\t\t\t<li template-button="order" order-id="${order._id}" user-telegram-id="${order.telegram_id}" class="applications__item template-switch-button user-application-button">🔗</li>\n\t\t\t\t\t</ul>\n\t\t\t\t`);
+            tableContainer.insertAdjacentHTML("beforeend", `\n\t\t\t\t\t<ul page-number="${pagesCounterValue}" class="applications__row">\n\t\t\t\t\t\t<li class="applications__item applications-create-at-item"><div class="applications-active-marker ${addCurrentActiveMarker(order)}"></div><div>${order.create_at}</div></li>\n\t\t\t\t\t\t<li class="applications__item">${order.name}</li>\n\t\t\t\t\t\t<li class="applications__item">${findAge(order.birthday)}</li>\n\t\t\t\t\t\t<li class="applications__item">${order.city}</li>\n\t\t\t\t\t\t<li class="applications__item">${order.feedback_phone}</li>\n\t\t\t\t\t\t<li class="applications__item">${order.kind}</li>\n\t\t\t\t\t\t<li class="applications__item">${order.title}</li>\n\t\t\t\t\t\t<li class="applications__item">${addStatusToTable(order.status)}</li>\n\t\t\t\t\t\t<li class="applications__item">${addResumeMarker(order.file_name)}</li>\n\t\t\t\t\t\t<li template-button="order" order-id="${order._id}" user-telegram-id="${order.telegram_id}" class="applications__item template-switch-button user-application-button">🔗</li>\n\t\t\t\t\t</ul>\n\t\t\t\t`);
             ordersOnPageCounter++;
         } else if (ordersOnPageCounter === ordersOnPage) {
             pagesCounterValue++;
@@ -341,152 +537,6 @@
         const vacancySelect = document.querySelector(".search-app__select");
         vacancySelect.selectedIndex = 0;
     };
-    const writeOrderInformationToAppPage = order => {
-        document.querySelector(".order-app-name").textContent = order.name;
-        document.querySelector(".order-app-phone").textContent = order.feedback_phone;
-        document.querySelector(".order-app-city").textContent = order.city;
-        document.querySelector(".order-app-date").textContent = order.birthday;
-        document.querySelector(".order-app-title").textContent = order.title;
-        document.querySelector(".order-app-kind").textContent = order.kind;
-        document.querySelector(".order-app-id").textContent = order._id;
-        document.querySelector(".order-app-create").textContent = order.create_at;
-        addStatusToOrderPage(order);
-        addInfoAboutResume(order);
-        addRatingToOrderPage(order);
-    };
-    const writeUserInformationToAppPage = user => {
-        document.querySelector(".user-app-create").textContent = user.created_at;
-        document.querySelector(".user-app-name").textContent = user.first_name;
-        document.querySelector(".user-app-phone").textContent = user.phone_number;
-        document.querySelector(".user-app-tg-link").textContent = user.username;
-        document.querySelector(".user-app-tg-href").setAttribute("href", `https://t.me/${user.username}`);
-    };
-    const addStatusToOrderPage = order => {
-        const orderStatus = document.querySelector(".order__application-info-item-active-status");
-        const greenCircle = document.querySelector(".application-info-item-active-green");
-        const redCircle = document.querySelector(".application-info-item-active-red");
-        if (order.is_active === true) {
-            redCircle.classList.add("_hidden");
-            greenCircle.classList.remove("_hidden");
-            orderStatus.innerHTML = "Заявка активна";
-        } else {
-            redCircle.classList.remove("_hidden");
-            greenCircle.classList.add("_hidden");
-            orderStatus.innerHTML = "Заявка не активна";
-        }
-    };
-    const addInfoAboutResume = order => {
-        const buttonContainer = document.querySelector(".order__application-info-resume-button-container");
-        const downloadButton = document.querySelector(".order__application-download-resume");
-        const resumeText = document.querySelector(".order-app-resume");
-        if (order.file_name !== null && order.file_name !== "") {
-            resumeText.textContent = order.file_name;
-            buttonContainer.classList.add("color-blue");
-            downloadButton.classList.remove("_hidden");
-        } else {
-            resumeText.textContent = "Відсутнє";
-            buttonContainer.classList.remove("color-blue");
-            downloadButton.classList.add("_hidden");
-        }
-    };
-    const addRatingToOrderPage = order => {
-        const ratingType = document.querySelector(".order-app-rating-type");
-        const rating = document.querySelector(".order-app-rating");
-        if (order.qualities !== "" && order.qualities !== null) {
-            ratingType.textContent = "Оцінка за допомогою Chat GPT";
-            rating.textContent = order.qualities;
-        } else if (order.points !== "" && order.points !== null) {
-            ratingType.textContent = "Оцінка за к-стю правильних відповідей";
-            rating.textContent = order.points;
-        }
-    };
-    const addInformationToAppPage = (userId, userTelegramId) => {
-        returnPromice(userId, userTelegramId).then((data => {
-            const orderId = data.userId;
-            const userTelegramId = data.userTelegramId;
-            const result = {
-                orderId,
-                userTelegramId
-            };
-            return result;
-        })).then((result => {
-            fetchOrderData(result.orderId).then((data => writeOrderInformationToAppPage(data.order)));
-            fetchUserData(result.userTelegramId).then((data => writeUserInformationToAppPage(data.user)));
-        }));
-    };
-    async function returnPromice(userId, userTelegramId) {
-        const data = {
-            userId,
-            userTelegramId
-        };
-        return data;
-    }
-    const writeDataToVacancyPage = vacancy => {
-        console.log(vacancy._id);
-        document.querySelector(".vacancy-create").textContent = vacancy.create_at;
-        document.querySelector(".vacancy-edit").textContent = vacancy.change_at;
-        document.querySelector(".vacancy-name").textContent = vacancy.title;
-        document.querySelector(".vacancy-kind").textContent = vacancy.kind;
-        document.querySelector(".vacancy-id").textContent = vacancy._id;
-        document.querySelector(".vacancy-description").innerHTML = cleanTagsStylesAndAttributes(vacancy.description_html);
-        addStatusToVacancy(vacancy);
-    };
-    const addStatusToVacancy = vacancy => {
-        const vacancyStatus = document.querySelector(".vacancy__application-info-item-active-status");
-        const greenCircle = document.querySelector(".vacancy-info-item-active-green");
-        const redCircle = document.querySelector(".vacancy-info-item-active-red");
-        if (vacancy.is_active === true) {
-            redCircle.classList.add("_hidden");
-            greenCircle.classList.remove("_hidden");
-            vacancyStatus.innerHTML = "Вакансія активна";
-        } else {
-            redCircle.classList.remove("_hidden");
-            greenCircle.classList.add("_hidden");
-            vacancyStatus.innerHTML = "Вакансія не активна";
-        }
-    };
-    function cleanTagsStylesAndAttributes(data) {
-        let doc = (new DOMParser).parseFromString(data, "text/html");
-        function removeStyles(element) {
-            element.removeAttribute("style");
-            element.removeAttribute("font-family");
-            for (let child of element.children) removeStyles(child);
-        }
-        removeStyles(doc.body);
-        return doc.documentElement.outerHTML;
-    }
-    const addInformationToVacancyPage = vacancyId => {
-        fetchVacancyData(vacancyId).then((data => writeDataToVacancyPage(data.vacancy)));
-    };
-    const showOrHiddenPagination = button => {
-        let buttonTemplateAttribute = button.getAttribute("template-button");
-        const allPaginations = document.querySelectorAll(".pagination");
-        for (let pagination of allPaginations) pagination.style.display = "none";
-        if (document.querySelector(`.pagination-${buttonTemplateAttribute}`)) {
-            const removeElement = document.querySelector(`.pagination-${buttonTemplateAttribute}`);
-            removeElement.style.display = "flex";
-        }
-    };
-    const showAndHiddenTemplates = button => {
-        const allTemplates = document.querySelectorAll(".template");
-        let buttonTemplateAttribute = button.getAttribute("template-button");
-        for (let template of allTemplates) if (template.getAttribute("template-name") !== buttonTemplateAttribute) template.classList.add("hidden-template"); else template.classList.remove("hidden-template");
-        if (button.classList.contains("menu__menu-item")) showOrHiddenPagination(button);
-        if (button.classList.contains("user-application-button")) addInformationToAppPage(button.getAttribute("order-id"), button.getAttribute("user-telegram-id"));
-        if (button.classList.contains("vacancy-application-button")) addInformationToVacancyPage(button.getAttribute("vacancy-id"));
-        if (button.classList.contains("order__back-button")) document.querySelector(".menu-apps-button").classList.add("menu-active-button");
-        if (button.classList.contains("vacancy__back-button")) document.querySelector(".menu-vacancies-button").classList.add("menu-active-button");
-        if (button.classList.contains("create-vacancy__back-button")) document.querySelector(".menu-vacancies-button").classList.add("menu-active-button");
-    };
-    const findAllTemplates = () => {
-        const allSwitchButtons = document.querySelectorAll(".template-switch-button");
-        const allMenuButtons = document.querySelectorAll(".menu__menu-item");
-        for (let button of allSwitchButtons) button.addEventListener("click", (e => {
-            for (let item of allMenuButtons) item.classList.remove("menu-active-button");
-            if (e.currentTarget.classList.contains("menu__menu-item")) e.currentTarget.classList.add("menu-active-button");
-            showAndHiddenTemplates(e.currentTarget);
-        }));
-    };
     const runFetchWithMainChain = () => {
         fetchOrdersData().then((orders => orders)).then((orders => kindFilterOrders(orders))).then((orders => vacancyFilterOrders(orders))).then((orders => searchFilterOrders(orders))).then((orders => sortOrders(orders))).then((orders => divideOrdersToPages(orders))).then((result => {
             const orders = result.orders;
@@ -501,7 +551,11 @@
             const ordersOnPage = result.ordersOnPage;
             const currentPage = result.currentPage;
             showCurrentPageOrders(orders, currentPage, ordersOnPage);
-        })).then((marker => findAllTemplates(marker))).catch((error => {
+            removePreloaderInKindsList();
+        })).then((marker => {
+            findAllTemplates(marker);
+            removePreloaderInKindsList();
+        })).catch((error => {
             console.error("Ошибка:", error);
         }));
     };
@@ -577,7 +631,10 @@
         return true;
     };
     const runFetchVacanciesWithMainChain = () => {
-        fetchVacanciesData().then((vacancies => vacancies)).then((vacancies => filterVacanciesByKinds(vacancies))).then((vacancies => filterVacanciesBySearchKeywords(vacancies))).then((vacancies => addVacanciesToTable(vacancies))).then((marker => findAllTemplates(marker)));
+        fetchVacanciesData().then((vacancies => vacancies)).then((vacancies => filterVacanciesByKinds(vacancies))).then((vacancies => filterVacanciesBySearchKeywords(vacancies))).then((vacancies => addVacanciesToTable(vacancies))).then((marker => {
+            findAllTemplates(marker);
+            removePreloaderInKindsList();
+        }));
     };
     runFetchVacanciesWithMainChain();
     document.addEventListener("DOMContentLoaded", (() => {

@@ -2,6 +2,7 @@
 import { addInformationToAppPage } from '../application/application-main-chain.js'; // Вывод информации о заявке в случае захода на страницу заявки
 import { addInformationToVacancyPage } from '../vacancy/vacancy-main-chain.js'; // Вывод информации о вакансии на странице вакансии
 import { showOrHiddenPagination } from './pagination.js'; // показываем или скрываем пагинацию в зависимости от шиблона
+import { addPreloaderInKindsList } from '../preloader.js'; // Добавляем прелоадер
 
 // Механика скрывания/показывания шаблонов
 const showAndHiddenTemplates = (button) => {
@@ -19,9 +20,11 @@ const showAndHiddenTemplates = (button) => {
 		showOrHiddenPagination(button);
 	}
 	if ( button.classList.contains("user-application-button") ) {
+		addPreloaderInKindsList();
 		addInformationToAppPage(button.getAttribute("order-id"), button.getAttribute("user-telegram-id"));
 	}
 	if ( button.classList.contains("vacancy-application-button") ) {
+		addPreloaderInKindsList();
 		addInformationToVacancyPage(button.getAttribute("vacancy-id"));
 	}
 	if ( button.classList.contains("order__back-button") ) {

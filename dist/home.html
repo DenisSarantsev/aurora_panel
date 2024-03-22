@@ -6,13 +6,23 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20240318122220">
+	<link rel="stylesheet" href="css/style.min.css?_v=20240322041137">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
+
+	<div class="preloader-in-widget preloader-hidden">
+		<div class="lds-ellipsis">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+
 	<div class="wrapper">
 		<!------------------------------------------------------------------------------------------------------------------------ Шапка -->
 		<header class="header">
@@ -128,10 +138,10 @@
 								<div class="search-vacancies__input-eyes _hidden">👀</div>
 							</div>
 						</div>
-						<button template-button="create-vacancy" class="vacancies-filter__add-vacancy add-vacancy-button template-switch-button">
-							<span>➕</span>
-							Додати вакансію
-						</button>
+						<!-- <button template-button="create-vacancy" class="vacancies-filter__add-vacancy add-vacancy-button template-switch-button">
+			<span>➕</span>
+			Додати вакансію
+		</button> -->
 					</div>
 				</aside>
 				<!------------------------------------------------------------------------------------------------------------------------- Шаблон з анкетами -->
@@ -234,11 +244,11 @@
 							</li>
 						</ul>
 						<div class="order__user-bottom-line">
-							<button class="order__user-delete-button">
-								Видалити користувача
-							</button>
+							<!-- <button class="order__user-delete-button">
+									Видалити користувача
+								</button> -->
 							<button class="order__user-black-list-button">
-								В чорний список
+								Заблокувати користувача
 							</button>
 						</div>
 					</div>
@@ -304,9 +314,9 @@
 							</li>
 						</ul>
 						<div class="order__application-info-botom-line">
-							<button class="order__application-info-botom-line-delete-button">
-								Видалити заявку
-							</button>
+							<!-- <button class="order__application-info-botom-line-delete-button">
+									Видалити заявку
+								</button> -->
 							<button class="order__application-info-botom-line-active-button">
 								Деактивувати заявку
 							</button>
@@ -374,14 +384,14 @@
 								<div class="vacancy__user-info-item-data vacancy-description"></div>
 							</li>
 						</ul>
-						<div class="vacancy__user-bottom-line">
-							<button class="vacancy__user-delete-button">
-								Видалити вакансію
-							</button>
-							<button class="vacancy__user-black-list-button">
-								Деактивувати вакансію
-							</button>
-						</div>
+						<!-- <div class="vacancy__user-bottom-line">
+								<button class="vacancy__user-delete-button">
+									Видалити вакансію
+								</button>
+								<button class="vacancy__user-black-list-button">
+									Деактивувати вакансію
+								</button>
+							</div> -->
 					</div>
 
 				</section>
@@ -433,8 +443,11 @@
 				</section>
 			</div>
 		</main>
-		<script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest?_v=20240318122220"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest?_v=20240322041137"></script>
 		<!------------------------------------------------------------------------------------------------------------------------ Футер з пагінацією -->
+		<script src="https://cdn.jsdelivr.net/npm/@barba/core?_v=20240322041137"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js?_v=20240322041137"></script>
+		<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.16/build/js/intlTelInput.min.js?_v=20240322041137"></script>
 		<footer class="footer">
 			<div class="footer__container">
 				<div class="footer__pagination pagination pagination-applications">
@@ -444,7 +457,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20240318122220"></script>
+	<script src="js/app.min.js?_v=20240322041137"></script>
 </body>
 
 </html>

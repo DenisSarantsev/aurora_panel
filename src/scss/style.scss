@@ -165,8 +165,10 @@ body {
 @import "scrollbar";
 @import "applications-filter";
 @import "pagination";
-@import "vacancies-filter.scss";
-@import "vacancies.scss";
-@import "application.scss";
-@import "vacancy.scss";
-@import "create-vacancy.scss";
+@import "vacancies-filter";
+@import "vacancies";
+@import "application";
+@import "vacancy";
+@import "create-vacancy";
+@import "index";
+@import "preloader";

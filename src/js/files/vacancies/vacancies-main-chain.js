@@ -7,6 +7,7 @@ import { filterVacanciesBySearchKeywords } from './vacancies-functions.js';
 import { addVacanciesToTable } from './vacancies-functions.js';
 // Функция для обновления всех шаблонов
 import { findAllTemplates } from '../universal/switching-templates.js';
+import { removePreloaderInKindsList } from '../preloader.js' // Функция отключения прелоадера
 
 // ------------------------------------------------> Функция вызова fetch запроса с цепочкой промисов, отвечающих за фильтрацию
 const runFetchVacanciesWithMainChain = () => {
@@ -17,7 +18,10 @@ const runFetchVacanciesWithMainChain = () => {
 	.then(vacancies => filterVacanciesByKinds(vacancies))
 	.then(vacancies => filterVacanciesBySearchKeywords(vacancies))
 	.then(vacancies => addVacanciesToTable(vacancies))
-	.then(marker => findAllTemplates(marker))
+	.then(marker => {
+		findAllTemplates(marker);
+		removePreloaderInKindsList(); // Отключаем прелоадер
+	})
 }
 
 runFetchVacanciesWithMainChain()

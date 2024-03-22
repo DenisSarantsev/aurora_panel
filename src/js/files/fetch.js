@@ -1,6 +1,7 @@
+import { addPreloaderInKindsList } from './preloader.js'; // Функция включения прелоадера
 // ----------------------------------------------------------------------------------------------- Получаем все анкеты кандидатов
 export async function fetchOrdersData() {
-  const apiUrl = 'https://fastapi-avrora-hr.fly.dev/path/admin/api/super-admin/orders/210325718';
+  const apiUrl = 'https://fastapi-avrora-hr.fly.dev/path/admin/api/super-admin/orders/210325718';  
   const requestOptions = {
     method: 'GET',
     headers: {
@@ -11,11 +12,12 @@ export async function fetchOrdersData() {
 
   try {
     const response = await fetch(apiUrl, requestOptions);
-
+		
     if (!response.ok) {
       throw new Error(`Ошибка HTTP: ${response.status}`);
     }
     const data = await response.json();
+		console.log(data)
     return data.orders;
   } catch (error) {
     console.error('Ошибка запроса:', error);
@@ -35,6 +37,7 @@ export async function fetchVacanciesData() {
   };
 
 	try {
+		addPreloaderInKindsList();
 		const response = await fetch(apiUrl, requestOptions);
 		if (!response.ok) {
       throw new Error(`Ошибка HTTP: ${response.status}`);
@@ -89,6 +92,7 @@ export async function fetchOrderData(orderId) {
       throw new Error(`Ошибка HTTP: ${response.status}`);
     }
 		const data = await response.json();
+		console.log(data)
     return data;
   } catch (error) {
     console.error('Ошибка запроса:', error);
@@ -113,6 +117,7 @@ export async function fetchUserData(userId) {
       throw new Error(`Ошибка HTTP: ${response.status}`);
     }
 		const data = await response.json();
+		console.log(data)
     return data;
   } catch (error) {
     console.error('Ошибка запроса:', error);
@@ -121,24 +126,19 @@ export async function fetchUserData(userId) {
 }
 
 
-// ---- Нерабочие камеры вокруг входных групп
-/*
-	Р7: 94, 40
-	Р4: 85, 402, 115, 107, 69
-	Р6: 84
-	Р5: 315, 122
-	Р3: 335, 72
-*/
 
-// ---- Нерабочие камеры на рампах
-/*
-	13: 114
-*/
 
-// ---- Нерабочие камеры в других важных зонах:
-/*
-	Центральный проезд: 251, 247, 6, 11, 701, 402, 728, 
-*/
+
+
+
+
+
+
+
+
+
+
+
 
 
 

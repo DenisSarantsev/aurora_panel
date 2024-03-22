@@ -4,6 +4,11 @@
 	"title":"HomePage"
 	})
 	<body>
+
+		<div class="preloader-in-widget preloader-hidden">
+			<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+		</div>
+
 		<div class="wrapper">
 			<!------------------------------------------------------------------------------------------------------------------------ Шапка -->
 			@@include('html/_header.htm',{})
@@ -115,11 +120,11 @@
 								</li>
 							</ul>
 							<div class="order__user-bottom-line">
-								<button class="order__user-delete-button">
+								<!-- <button class="order__user-delete-button">
 									Видалити користувача
-								</button>
+								</button> -->
 								<button class="order__user-black-list-button">
-									В чорний список
+									Заблокувати користувача
 								</button>
 							</div>
 						</div>
@@ -185,9 +190,9 @@
 								</li>
 							</ul>
 							<div class="order__application-info-botom-line">
-								<button class="order__application-info-botom-line-delete-button">
+								<!-- <button class="order__application-info-botom-line-delete-button">
 									Видалити заявку
-								</button>
+								</button> -->
 								<button class="order__application-info-botom-line-active-button">
 									Деактивувати заявку
 								</button>
@@ -255,14 +260,14 @@
 									<div class="vacancy__user-info-item-data vacancy-description"></div>
 								</li>
 							</ul>
-							<div class="vacancy__user-bottom-line">
+							<!-- <div class="vacancy__user-bottom-line">
 								<button class="vacancy__user-delete-button">
 									Видалити вакансію
 								</button>
 								<button class="vacancy__user-black-list-button">
 									Деактивувати вакансію
 								</button>
-							</div>
+							</div> -->
 						</div>
 
 					</section>

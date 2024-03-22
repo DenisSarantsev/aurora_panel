@@ -18,6 +18,7 @@ import { closeBlocksAfterClick } from '../universal/collapse-filter.js';
 import { clearOrdersFilter } from './applications-functions.js';
 // Функция для обновления всех шаблонов
 import { findAllTemplates } from '../universal/switching-templates.js';
+import { removePreloaderInKindsList } from '../preloader.js' // Функция отключения прелоадера
 
 // ------------------------------------------------> Функция вызова fetch запроса с цепочкой промисов, отвечающих за фильтрацию
 const runFetchWithMainChain = () => {
@@ -467,8 +468,12 @@ const runFetchWithMainChain = () => {
 		const ordersOnPage = result.ordersOnPage;
 		const currentPage = result.currentPage;
 		showCurrentPageOrders( orders, currentPage, ordersOnPage );
+		removePreloaderInKindsList() // Отключаем прелоадер
 	})
-	.then(marker => findAllTemplates(marker))
+	.then(marker => {
+		findAllTemplates(marker);
+		removePreloaderInKindsList(); // Отключаем прелоадер
+	})
   .catch(error => {
     console.error('Ошибка:', error);
     // Обработка ошибок при выполнении запроса
