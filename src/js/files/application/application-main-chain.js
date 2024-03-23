@@ -4,11 +4,12 @@ import { writeOrderInformationToAppPage } from './application-functions.js'; // 
 import { writeUserInformationToAppPage } from './application-functions.js'; // Вписываем данные юзера на страницу
 import { removePreloaderInKindsList } from '../preloader.js'; // Функция отключения прелоадера
 import { downloadResumeFile } from './application-functions.js'; // Функция зарузки файла
+import { addListenerToSendMessage } from './application-functions.js'; // Функционал отправки сообщения пользователю
 
 // --------------> Выводим информацию о конкретной заявке по переданному id
 // Вызываем id и запускаем основную цепочку
-export const addInformationToAppPage = (userId, userTelegramId) => {
-	returnPromice(userId, userTelegramId)
+export const addInformationToAppPage = (orderId, userTelegramId) => {
+	returnPromice(orderId, userTelegramId)
 	.then(data => {
 		const orderId = data.userId;
 		const userTelegramId = data.userTelegramId;
@@ -31,3 +32,7 @@ async function returnPromice(userId, userTelegramId) {
 	const data = { userId, userTelegramId };
 	return data
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+	addListenerToSendMessage();
+})

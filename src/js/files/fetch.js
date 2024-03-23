@@ -126,9 +126,59 @@ export async function fetchUserData(userId) {
   }
 }
 
+// --------------------------------------------------------------------------------- Отправляем комментарий
+export async function fetchPostComment(orderId, hrStatus, telegramId, bodyFetch) {
+  const apiUrl = `https://fastapi-avrora-hr.fly.dev/path/${hrStatus}/settings/order/${orderId}/add_comment/${telegramId}`;
 
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'password': '$2b$12$rOy4/Mc.D15d801IweWOtOQlfSLhzoYwJmxuQihKp7QT3PY66qtZm'
+    },
+    body: JSON.stringify({text: bodyFetch})
+  };
 
+  try {
+    const response = await fetch(apiUrl, requestOptions);
+    if (!response.ok) {
+      throw new Error(`Ошибка HTTP: ${response.status}`);
+    }
+    const data = await response.json();
+    console.log(data)
+    return data;
+  } catch (error) {
+    console.error('Ошибка запроса:', error);
+    throw error;
+  }
+}
 
+// --------------------------------------------------------------------------------- Отправляем сообщение
+export async function fetchPostMessageToUser(orderId, hrStatus, telegramId, message) {
+  const apiUrl = `https://fastapi-avrora-hr.fly.dev/path/${hrStatus}/settings/user/${orderId}/send_message/${telegramId}`;
+
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'password': '$2b$12$rOy4/Mc.D15d801IweWOtOQlfSLhzoYwJmxuQihKp7QT3PY66qtZm'
+    },
+    body: JSON.stringify({text: message})
+  };
+
+  try {
+    const response = await fetch(apiUrl, requestOptions);
+    if (!response.ok) {
+      throw new Error(`Ошибка HTTP: ${response.status}`);
+    }
+    const data = await response.json();
+    console.log(data)
+    return data;
+  } catch (error) {
+    console.error('Ошибка запроса:', error);
+    throw error;
+  }
+}
 
 
 

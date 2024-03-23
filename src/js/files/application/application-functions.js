@@ -1,3 +1,8 @@
+import { data } from '../data.js'; // Данные, полученные через Jinja2
+import { fetchPostComment } from '../fetch.js'; // Post запрос для смены статсу и обновления комментария
+import { addInformationToAppPage } from './application-main-chain.js'; // Запуск основной цепочки для перезаписи информации на странцие
+import { fetchPostMessageToUser } from '../fetch.js'; // Post запрос для отправки сообщения пользователю
+
 // --------------> Запись нужной информации о заявке на странице заявки
 export const writeOrderInformationToAppPage = (order) => {
 	document.querySelector(".order-app-name").textContent = order.name;
@@ -15,12 +20,14 @@ export const writeOrderInformationToAppPage = (order) => {
 
 // --------------> Запись нужной информации о пользователе на странице заявки
 export const writeUserInformationToAppPage = (user) => {
+	console.log("counter")
 	document.querySelector(".user-app-create").textContent = user.created_at;
 	document.querySelector(".user-app-name").textContent = user.first_name;
 	document.querySelector(".user-app-phone").textContent = user.phone_number;
-
+	document.querySelector(".user-tg-id").textContent = user.telegram_id;
 	document.querySelector(".user-app-tg-link").textContent = user.username;
 	document.querySelector(".user-app-tg-href").setAttribute("href", `https://t.me/${user.username}`);
+
 	addCommentToApplicationPage(user);
 	writeNewCommentToAllComments(user);
 }
@@ -62,21 +69,6 @@ const replaceSymbolsToTags = (text) => {
 			.replace(/\r\n/g, " ")  // Заменяем символы \r\n строки на пробел
 			.replace(/\n20/g, "<br><br>20")  // Заменяем символ переноса строки на HTML-тег <br>
 }
-
-// Запись новой информации в комментарии
-const writeNewCommentToAllComments = (user) => {
-	const sendButton = document.querySelector(".order__application-info-comments-button");
-	sendButton.addEventListener("click", () => {
-		const newText = document.querySelector(".order__application-info-comments-textarea").value;
-		const oldText = user.info;
-		const sendText = oldText + newText;
-		console.log(sendText)
-	})
-}
-
-
-
-
 
 // Ставим статус для заявки (активна / не активна)
 const addStatusToOrderPage = (order) => {
@@ -123,3 +115,41 @@ const addRatingToOrderPage = (order) => {
 	}
 }
 
+
+// -------------------------------------------------------------------------- Запись новой информации в комментарии
+const writeCommentHandleClick = () => {
+  const textarea = document.querySelector(".order__application-info-comments-textarea");
+  if (textarea.value.length === 0) {
+    textarea.classList.add("textarea-red-border");
+  } else {
+    textarea.classList.add("textarea-transparent-border");
+    let newText = document.querySelector(".order__application-info-comments-textarea").value;
+    fetchPostComment( +document.querySelector(".order-app-id").textContent, data.hr_status, data.telegram_id, newText)
+      .then(data => {
+        addInformationToAppPage( +document.querySelector(".order-app-id").textContent, +document.querySelector(".user-tg-id").textContent )
+				textarea.value = '';
+      })
+  }
+};
+
+// Добавление прослушивателя события
+export const writeNewCommentToAllComments = (user) => {
+	removeClickListener()
+  const sendButton = document.querySelector(".order__application-info-comments-button");
+  sendButton.addEventListener("click", writeCommentHandleClick);
+}
+
+// Удаление прослушивателя события
+const removeClickListener = () => {
+  const sendButton = document.querySelector(".order__application-info-comments-button");
+  sendButton.removeEventListener("click", writeCommentHandleClick);
+};
+
+// -------------------------------------------------------------------------- Отправка сообщения пользователю
+
+// Навешиваем событие клика на кнопку отправки сообщения
+export const addListenerToSendMessage = () => {
+	document.querySelector(".order__user-send-message-button").addEventListener("click", () => {
+		console.log("ok")
+	})
+}

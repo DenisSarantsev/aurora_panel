@@ -14,6 +14,8 @@
 			@@include('html/_header.htm',{})
 			<main class="page">
 				<div class="page__container">
+					<!------------------------------------------------------------------------------------------------------------------------ Модальне вікно для відправки повідомлення кандидату -->
+					@@include('html/_message-modal-window.htm',{})
 					<!------------------------------------------------------------------------------------------------------------------------ Головний сайдбар -->
 					@@include('html/_menu.htm',{})
 					<!------------------------------------------------------------------------------------------------------------------------- Фільтр заявок кандидатів -->
@@ -114,15 +116,19 @@
 									<div class="order__user-info-item-data user-app-phone"></div>
 								</li>
 								<li class="order__user-info-item">
+									<div class="order__user-info-item-title">• Телеграм ID - </div>
+									<div class="order__user-info-item-data user-tg-id"></div>
+								</li>
+								<li class="order__user-info-item">
 									<div class="order__user-info-item-title">• Посилання на профіль в телеграм - </div>
 									<a href="" target="_blank" class="order__user-info-item-data user-app-tg-link user-app-tg-href"></a>
 									<span>🔗</span>
 								</li>
 							</ul>
 							<div class="order__user-bottom-line">
-								<!-- <button class="order__user-delete-button">
-									Видалити користувача
-								</button> -->
+								<button class="order__user-send-message-button">
+									Надіслати SMS
+								</button>
 								<button class="order__user-black-list-button">
 									Заблокувати користувача
 								</button>
@@ -206,10 +212,10 @@
 							<div class="order__application-info-comments-text">
 
 							</div>
-							<textarea placeholder="Ви можете додати свій коментар тут" class="order__application-info-comments-textarea"></textarea>
+							<textarea placeholder="Ви можете додати свій коментар тут. Враховуйте те, що після збереження видалити його буде неможливо" class="order__application-info-comments-textarea"></textarea>
 							<div class="order__application-info-comments-bottom-line">
 								<button class="order__application-info-comments-button">
-									Залишити коментар
+									Додати коментар
 								</button>
 							</div>
 						</div>

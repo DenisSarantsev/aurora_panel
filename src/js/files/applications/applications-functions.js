@@ -1,4 +1,3 @@
-
 // ------------------------------------------------------------------------ Функции для локального использования
 const getCheckedKinds = () => {
 	const allKindsCheckboxes = document.querySelectorAll(".kinds-app__checkbox-input");

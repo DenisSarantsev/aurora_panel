@@ -48,21 +48,21 @@
 		justify-content: flex-end;
 		gap: toRem(15);
 	}
-	&__user-delete-button {
+	&__user-send-message-button {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		height: toRem(30);
 		padding: toRem(5) toRem(10);
-		border: 1px solid rgba($color: red, $alpha: 0.6);
 		border-radius: $blocksBorderRadius;
 		font-weight: 400;
 		transition: all 0.3s ease 0s;
-		color: rgba($color: red, $alpha: 0.6);
+		color: rgba($color: #000000, $alpha: 0.5);
+		border: 1px solid rgba($color: #000000, $alpha: 0.5);
 		&:hover {
 			transition: all 0.3s ease 0s;
-			background-color: rgba($color: red, $alpha: 0.7);
-			color: #FFFFFF;
+			background-color: $mainYellow;
+			color: #000000;
 		}
 	}
 	&__user-black-list-button {
@@ -252,4 +252,12 @@
 	&:hover {
 		text-decoration: underline;
 	}
+}
+
+.textarea-red-border {
+	border: 1px solid red;
+}
+
+.textarea-transparent-border {
+	border: 1px solid transparent;
 }

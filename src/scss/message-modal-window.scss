@@ -1,0 +1,54 @@
+.message-window {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba($color: #000000, $alpha: 0.5);
+	z-index: 10000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&__container {
+		display: flex;
+		flex-direction: column;
+		gap: toRem(25);
+		align-items: center;
+		background-color: #f7f7f7;
+		padding: toRem(35);
+		border-radius: $blocksBorderRadius;
+		position: relative;
+		min-width: toRem(500);
+	}
+	&__top-block {
+		display: flex;
+		gap: toRem(30);
+		align-items: center;
+	}
+	&__title {
+		font-size: toRem(15);
+		font-weight: 500;
+	}
+	&__close-button {
+		font-size: toRem(25);
+		position: absolute;
+		top: toRem(12);
+		right: toRem(14);
+
+	}
+	&__textarea {
+		width: 100%;
+		border-radius: $blocksBorderRadius;
+		outline: none;
+		padding: toRem(10);
+		border: 1px solid rgba(166,166,166,0.4);
+		box-shadow: 0px 0px 7px 2px rgba(166,166,166,0.2) inset;
+		-webkit-box-shadow: 0px 0px 7px 2px rgba(166,166,166,0.2) inset;
+		-moz-box-shadow: 0px 0px 7px 2px rgba(166,166,166,0.2) inset;
+		&:focus {
+			border: 1px solid $mainYellow;
+		}
+	}
+	&__send-button {
+	}
+}

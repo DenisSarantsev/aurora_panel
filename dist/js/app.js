@@ -181,6 +181,34 @@
             throw error;
         }
     }
+    async function fetchPostComment(orderId, hrStatus, telegramId, bodyFetch) {
+        const apiUrl = `https://fastapi-avrora-hr.fly.dev/path/${hrStatus}/settings/order/${orderId}/add_comment/${telegramId}`;
+        const requestOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                password: "$2b$12$rOy4/Mc.D15d801IweWOtOQlfSLhzoYwJmxuQihKp7QT3PY66qtZm"
+            },
+            body: JSON.stringify({
+                text: bodyFetch
+            })
+        };
+        try {
+            const response = await fetch(apiUrl, requestOptions);
+            if (!response.ok) throw new Error(`Ошибка HTTP: ${response.status}`);
+            const data = await response.json();
+            console.log(data);
+            return data;
+        } catch (error) {
+            console.error("Ошибка запроса:", error);
+            throw error;
+        }
+    }
+    const data = {
+        telegram_id: 210325718,
+        user_name: "Denys",
+        hr_status: "admin"
+    };
     const writeOrderInformationToAppPage = order => {
         document.querySelector(".order-app-name").textContent = order.name;
         document.querySelector(".order-app-phone").textContent = order.feedback_phone;
@@ -195,9 +223,11 @@
         addRatingToOrderPage(order);
     };
     const writeUserInformationToAppPage = user => {
+        console.log("counter");
         document.querySelector(".user-app-create").textContent = user.created_at;
         document.querySelector(".user-app-name").textContent = user.first_name;
         document.querySelector(".user-app-phone").textContent = user.phone_number;
+        document.querySelector(".user-tg-id").textContent = user.telegram_id;
         document.querySelector(".user-app-tg-link").textContent = user.username;
         document.querySelector(".user-app-tg-href").setAttribute("href", `https://t.me/${user.username}`);
         addCommentToApplicationPage(user);
@@ -227,15 +257,6 @@
         commentsArea.insertAdjacentHTML("beforeend", `${replaceSymbolsToTags(user.info)}`);
     };
     const replaceSymbolsToTags = text => text.replace(/\r\n/g, " ").replace(/\n20/g, "<br><br>20");
-    const writeNewCommentToAllComments = user => {
-        const sendButton = document.querySelector(".order__application-info-comments-button");
-        sendButton.addEventListener("click", (() => {
-            const newText = document.querySelector(".order__application-info-comments-textarea").value;
-            const oldText = user.info;
-            const sendText = oldText + newText;
-            console.log(sendText);
-        }));
-    };
     const addStatusToOrderPage = order => {
         const orderStatus = document.querySelector(".order__application-info-item-active-status");
         const greenCircle = document.querySelector(".application-info-item-active-green");
@@ -275,8 +296,33 @@
             rating.textContent = order.points;
         }
     };
-    const addInformationToAppPage = (userId, userTelegramId) => {
-        returnPromice(userId, userTelegramId).then((data => {
+    const writeCommentHandleClick = () => {
+        const textarea = document.querySelector(".order__application-info-comments-textarea");
+        if (textarea.value.length === 0) textarea.classList.add("textarea-red-border"); else {
+            textarea.classList.add("textarea-transparent-border");
+            let newText = document.querySelector(".order__application-info-comments-textarea").value;
+            fetchPostComment(+document.querySelector(".order-app-id").textContent, data.hr_status, data.telegram_id, newText).then((data => {
+                addInformationToAppPage(+document.querySelector(".order-app-id").textContent, +document.querySelector(".user-tg-id").textContent);
+                textarea.value = "";
+            }));
+        }
+    };
+    const writeNewCommentToAllComments = user => {
+        removeClickListener();
+        const sendButton = document.querySelector(".order__application-info-comments-button");
+        sendButton.addEventListener("click", writeCommentHandleClick);
+    };
+    const removeClickListener = () => {
+        const sendButton = document.querySelector(".order__application-info-comments-button");
+        sendButton.removeEventListener("click", writeCommentHandleClick);
+    };
+    const addListenerToSendMessage = () => {
+        document.querySelector(".order__user-send-message-button").addEventListener("click", (() => {
+            console.log("ok");
+        }));
+    };
+    const addInformationToAppPage = (orderId, userTelegramId) => {
+        returnPromice(orderId, userTelegramId).then((data => {
             const orderId = data.userId;
             const userTelegramId = data.userTelegramId;
             const result = {
@@ -299,6 +345,9 @@
         };
         return data;
     }
+    document.addEventListener("DOMContentLoaded", (() => {
+        addListenerToSendMessage();
+    }));
     const writeDataToVacancyPage = vacancy => {
         console.log(vacancy._id);
         document.querySelector(".vacancy-create").textContent = vacancy.create_at;
