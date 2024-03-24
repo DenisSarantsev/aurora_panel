@@ -21,7 +21,7 @@ import { findAllTemplates } from '../universal/switching-templates.js';
 import { removePreloaderInKindsList } from '../preloader.js' // Функция отключения прелоадера
 
 // ------------------------------------------------> Функция вызова fetch запроса с цепочкой промисов, отвечающих за фильтрацию
-const runFetchWithMainChain = () => {
+export const runFetchWithMainChain = () => {
 	fetchOrdersData()
   .then(orders => {
   //   orders = [

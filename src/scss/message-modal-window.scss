@@ -25,6 +25,13 @@
 		gap: toRem(30);
 		align-items: center;
 	}
+	&__fields-container {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: toRem(25);
+		align-items: center;
+	}
 	&__title {
 		font-size: toRem(15);
 		font-weight: 500;
@@ -50,5 +57,26 @@
 		}
 	}
 	&__send-button {
+	}
+}
+
+._hidden {
+	display: none;
+}
+
+.modal-window-red-border {
+	border: 1px solid red;
+}
+
+.success-message {
+	display: flex;
+	gap: toRem(15);
+	&__icon {
+		font-size: toRem(18);
+		color: greenyellow;
+	}
+	&__text {
+		font-weight: 500;
+		font-size: toRem(17);
 	}
 }

@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20240323040033">
+	<link rel="stylesheet" href="css/style.min.css?_v=20240324205135">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,19 +46,50 @@
 		</header>
 		<main class="page">
 			<div class="page__container">
+				<!------------------------------------------------------------------------------------------------------------------------ Модальне вікно для блокування кандидата -->
+				<div class="user-block-window _hidden-window">
+					<div class="user-block-window__container">
+						<div class="user-block-window__top-block">
+							<button class="user-block-window__close-button">
+								✕
+							</button>
+						</div>
+						<div class="user-block-window__fields-container _hidden-window">
+							<div class="user-block-window__title">
+								Вкажіть причину для блокування:
+							</div>
+							<textarea cols="30" rows="10" class="user-block-window__textarea"></textarea>
+							<button class="user-block-window__send-button back-button-style">Заблокувати користувача</button>
+						</div>
+						<div class="user-block-window__success _hidden-window">
+							<div class="user-block-message">
+								<div class="user-block-message__icon">🔒</div>
+								<span class="user-block-message__text">Користувача заблоковано</span>
+							</div>
+						</div>
+					</div>
+				</div>
 				<!------------------------------------------------------------------------------------------------------------------------ Модальне вікно для відправки повідомлення кандидату -->
-				<div class="message-window">
+				<div class="message-window _hidden">
 					<div class="message-window__container">
 						<div class="message-window__top-block">
-							<div class="message-window__title">
-								Введіть текст повідомлення:
-							</div>
 							<button class="message-window__close-button">
 								✕
 							</button>
 						</div>
-						<textarea name="" id="" cols="30" rows="10" class="message-window__textarea"></textarea>
-						<button class="message-window__send-button back-button-style">Надіслати повідомлення</button>
+						<div class="message-window__fields-container _hidden">
+							<div class="message-window__title">
+								Введіть текст повідомлення:
+							</div>
+							<textarea cols="30" rows="10" class="message-window__textarea"></textarea>
+							<button class="message-window__send-button back-button-style">Надіслати повідомлення</button>
+						</div>
+						<div class="message-window__success _hidden">
+							<div class="success-message">
+								<div class="success-message__icon">✅</div>
+								<span class="success-message__text">Повідомлення успішно надіслано</span>
+							</div>
+						</div>
 					</div>
 				</div>
 				<!------------------------------------------------------------------------------------------------------------------------ Головний сайдбар -->
@@ -241,23 +272,23 @@
 						</h3>
 						<ul class="order__user-info-list">
 							<li class="order__user-info-item">
-								<div class="order__user-info-item-title">• Дата створення користувача - </div>
+								<div class="order__user-info-item-title">• Дата створення користувача </div>
 								<div class="order__user-info-item-data user-app-create"></div>
 							</li>
 							<li class="order__user-info-item">
-								<div class="order__user-info-item-title">• П.І.Б. користувача - </div>
+								<div class="order__user-info-item-title">• П.І.Б. користувача </div>
 								<div class="order__user-info-item-data user-app-name"></div>
 							</li>
 							<li class="order__user-info-item">
-								<div class="order__user-info-item-title">• Телефон профілю в телеграм - </div>
+								<div class="order__user-info-item-title">• Телефон профілю в телеграм </div>
 								<div class="order__user-info-item-data user-app-phone"></div>
 							</li>
 							<li class="order__user-info-item">
-								<div class="order__user-info-item-title">• Телеграм ID - </div>
+								<div class="order__user-info-item-title">• Телеграм ID </div>
 								<div class="order__user-info-item-data user-tg-id"></div>
 							</li>
 							<li class="order__user-info-item">
-								<div class="order__user-info-item-title">• Посилання на профіль в телеграм - </div>
+								<div class="order__user-info-item-title">• Посилання на профіль в телеграм </div>
 								<a href="" target="_blank" class="order__user-info-item-data user-app-tg-link user-app-tg-href"></a>
 								<span>🔗</span>
 							</li>
@@ -285,60 +316,69 @@
 						</div>
 						<ul class="order__application-info-list">
 							<li class="order__application-info-item">
-								<div class="order__application-info-item-title">• П.І.Б. - </div>
+								<div class="order__application-info-item-title">• П.І.Б. </div>
 								<div class="order__application-info-item-data order-app-name"></div>
 							</li>
 							<li class="order__application-info-item">
-								<div class="order__application-info-item-title">• Телефон - </div>
+								<div class="order__application-info-item-title">• Телефон </div>
 								<div class="order__application-info-item-data order-app-phone"></div>
 							</li>
 							<li class="order__application-info-item">
-								<div class="order__application-info-item-title">• Населений пункт - </div>
+								<div class="order__application-info-item-title">• Населений пункт </div>
 								<div class="order__application-info-item-data order-app-city"></div>
 							</li>
 							<li class="order__application-info-item">
-								<div class="order__application-info-item-title">• Дата народження - </div>
+								<div class="order__application-info-item-title">• Дата народження </div>
 								<div class="order__application-info-item-data order-app-date"></div>
 							</li>
 							<li class="order__application-info-item">
-								<div class="order__application-info-item-title">• Назва вакансії - </div>
+								<div class="order__application-info-item-title">• Назва вакансії </div>
 								<div class="order__application-info-item-data order-app-title"></div>
 							</li>
 							<li class="order__application-info-item">
-								<div class="order__application-info-item-title">• Напрямок - </div>
+								<div class="order__application-info-item-title">• Напрямок </div>
 								<div class="order__application-info-item-data order-app-kind"></div>
 							</li>
 							<li class="order__application-info-item">
-								<div class="order__application-info-item-title">• ID заявки - </div>
+								<div class="order__application-info-item-title">• ID заявки </div>
 								<div class="order__application-info-item-data order-app-id"></div>
 							</li>
 							<li class="order__application-info-item">
-								<div class="order__application-info-item-title">• Дата створення - </div>
+								<div class="order__application-info-item-title">• Дата створення </div>
 								<div class="order__application-info-item-data order-app-create"></div>
 							</li>
 							<li class="order__application-info-item">
-								<div class="order__application-info-item-title">• Резюме - </div>
+								<div class="order__application-info-item-title">• Резюме </div>
 								<button class="order__application-info-resume-button-container">
 									<div class="order__application-info-item-data order-app-resume"></div>
 									<div class="order__application-download-resume">⇩</div>
 								</button>
 							</li>
 							<li class="order__application-info-item">
-								<div class="order__application-info-item-title">• Спосіб оцінювання - </div>
+								<div class="order__application-info-item-title">• Спосіб оцінювання </div>
 								<div class="order__application-info-item-data order-app-rating-type">Тестування / Chat GPT</div>
 							</li>
 							<li class="order__application-info-item">
-								<div class="order__application-info-item-title">• Кількість балів / Висновок - </div>
+								<div class="order__application-info-item-title">• Кількість балів / Висновок </div>
 								<div class="order__application-info-item-data order-app-rating"></div>
 							</li>
 						</ul>
 						<div class="order__application-info-botom-line">
-							<!-- <button class="order__application-info-botom-line-delete-button">
-									Видалити заявку
-								</button> -->
-							<button class="order__application-info-botom-line-active-button">
-								Деактивувати заявку
+							<select name="" id="" class="order__application-statuses-list">
+							</select>
+							<button class="order__application-info-bottom-line-active-button">
+								<span class="order__shange-status-button">Змінити статус</span>
 							</button>
+							<button class="order__application-info-bottom-line-save-button _app-info-hidden">
+								<span class="order__save-status-button">Зберегти зміни</span>
+							</button>
+							<button class="order__application-info-bottom-line-cancel-button _app-info-hidden">
+								<span class="order__cancel-status-button">Скасувати зміни</span>
+							</button>
+							<div class="order__application-info-bottom-line-success-message _app-info-hidden">
+								<span class="order__application-info-bottom-line-success-icon">✓</span>
+								<span class="order__application-info-bottom-line-success-text">Статус змінено</span>
+							</div>
 						</div>
 					</div>
 					<div class="order__application-info-comments">
@@ -349,7 +389,7 @@
 						<div class="order__application-info-comments-text">
 
 						</div>
-						<textarea placeholder="Ви можете додати свій коментар тут. Враховуйте те, що після збереження видалити його буде неможливо" class="order__application-info-comments-textarea"></textarea>
+						<textarea placeholder="Ви можете додати свій коментар тут. Після збереження видалити його буде неможливо" class="order__application-info-comments-textarea"></textarea>
 						<div class="order__application-info-comments-bottom-line">
 							<button class="order__application-info-comments-button">
 								Додати коментар
@@ -462,11 +502,11 @@
 				</section>
 			</div>
 		</main>
-		<script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest?_v=20240323040033"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest?_v=20240324205135"></script>
 		<!------------------------------------------------------------------------------------------------------------------------ Футер з пагінацією -->
-		<script src="https://cdn.jsdelivr.net/npm/@barba/core?_v=20240323040033"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js?_v=20240323040033"></script>
-		<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.16/build/js/intlTelInput.min.js?_v=20240323040033"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@barba/core?_v=20240324205135"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js?_v=20240324205135"></script>
+		<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.16/build/js/intlTelInput.min.js?_v=20240324205135"></script>
 		<footer class="footer">
 			<div class="footer__container">
 				<div class="footer__pagination pagination pagination-applications">
@@ -476,7 +516,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20240323040033"></script>
+	<script src="js/app.min.js?_v=20240324205135"></script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@
 	width: 100%;
 		&__table-title {
 			display: grid;
-			grid-template-columns: 100px 1fr 30px 1fr 150px 100px 1fr 70px 30px 30px;
+			grid-template-columns: 100px 1fr 30px 1fr 120px 100px 1fr 150px 30px 30px;
 			grid-template-rows: 1fr;
 			grid-column-gap: 0px;
 			grid-row-gap: 0px;
@@ -31,22 +31,25 @@
 		}
 		&__table-result-container {
 			font-size: toRem(14);
-			display: flex;
-			flex-direction: column;
+			display: grid;
+			grid-template-rows: repeat(1fr);
+			grid-template-columns: 1fr;
 			gap: toRem(5);
 		}
 
 		&__row {
-			grid-template-columns: 100px 1fr 30px 1fr 150px 100px 1fr 70px 30px 30px;
+			grid-template-columns: 100px 1fr 30px 1fr 120px 100px 1fr 150px 30px 30px;
 			grid-template-rows: 1fr;
 			grid-column-gap: 0px;
 			grid-row-gap: 0px;
 			font-size: toRem(13);
 			width: 100%;
-			padding: toRem(5);
 			background-color: rgba($color: #000000, $alpha: 0.05);
 			border-radius: $blocksBorderRadius;
 			border: 2px solid transparent;
+			&>*:not(:nth-child(8)) {
+				padding: toRem(5);
+			}
 			&:hover {
 				border: 2px solid $mainYellow;
 				cursor: pointer;
@@ -112,4 +115,25 @@
 }
 .am-red {
 	background-color: rgb(255, 56, 56);
+}
+
+.applications-item-current-status {
+	font-weight: 600;
+}
+
+.new-order-status {
+	background-color: rgb(153, 255, 0);
+}
+
+.process-order-status {
+	background-color: #fff200;
+}
+
+.success-order-status {
+	background-color: rgb(0, 191, 255);
+}
+
+.failed-order-status {
+	background-color: rgb(255, 0, 0);
+	color: #FFFFFF;
 }

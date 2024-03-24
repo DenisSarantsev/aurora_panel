@@ -5,6 +5,9 @@ import { writeUserInformationToAppPage } from './application-functions.js'; // �
 import { removePreloaderInKindsList } from '../preloader.js'; // Функция отключения прелоадера
 import { downloadResumeFile } from './application-functions.js'; // Функция зарузки файла
 import { addListenerToSendMessage } from './application-functions.js'; // Функционал отправки сообщения пользователю
+import { addListenerToBlockUserButton } from './application-functions.js'; // Функционал блокировки пользователя
+import { unblockStatusesList } from './application-functions.js'; // Вешаем событие клика на кнопку изменения статуса
+import { addStatusesToList } from './application-functions.js'; // Добавляем все нужние статусы в список
 
 // --------------> Выводим информацию о конкретной заявке по переданному id
 // Вызываем id и запускаем основную цепочку
@@ -18,6 +21,8 @@ export const addInformationToAppPage = (orderId, userTelegramId) => {
 	})
 	.then(result => {
 		fetchOrderData(result.orderId).then(data => {
+			unblockStatusesList();
+			addStatusesToList(data);
 			writeOrderInformationToAppPage(data.order);
 			downloadResumeFile(data);
 		});
@@ -35,4 +40,6 @@ async function returnPromice(userId, userTelegramId) {
 
 document.addEventListener("DOMContentLoaded", () => {
 	addListenerToSendMessage();
+	addListenerToBlockUserButton();
+	unblockStatusesList();
 })

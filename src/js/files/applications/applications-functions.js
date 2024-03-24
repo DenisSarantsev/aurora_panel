@@ -268,6 +268,23 @@ export const addOrdersToTable = (orders, ordersOnPage) => {
 	let pagesCounterValue = 1; // Считает кол-во страниц и отвечает за добавление индентификатора страницы в строку заявки
 	for ( let order of orders ) {
 		if ( ordersOnPageCounter < ordersOnPage ) {
+
+			// Определяем цвет заявки в списке в зависимости от статуса
+			let orderColorClass = "new-order-status";
+			if ( order.status === "Новий" ) {
+				orderColorClass = "new-order-status";
+			} else if ( order.status === "Погоджено рекрутингом" || order.status === "Потребує додаткового розгляду" || order.status === "Запрошено на співбесіду" ) {
+				orderColorClass = "process-order-status";
+			} else if ( order.status === "Відхилено рекрутингом" || order.status === "Відхилено керівником в задачі" || 
+									order.status === "Відмова керівника після співбесіди" || order.status === "Відмова кандидата" || 
+									order.status === "Відмова після розгляду заявки рекрутером" || order.status === "Відмова після співбесіди" ) {
+				orderColorClass = "failed-order-status";
+			} else if ( order.status === "Прийняв offer" || order.status === "Резерв" || 
+									order.status === "Запрошено на працевлаштування" || order.status === "Завершений" ) {
+				orderColorClass = "success-order-status";
+			}
+
+
 			tableContainer.insertAdjacentHTML("beforeend", 
 				`
 					<ul page-number="${pagesCounterValue}" class="applications__row">
@@ -278,7 +295,7 @@ export const addOrdersToTable = (orders, ordersOnPage) => {
 						<li class="applications__item">${order.feedback_phone}</li>
 						<li class="applications__item">${order.kind}</li>
 						<li class="applications__item">${order.title}</li>
-						<li class="applications__item">${addStatusToTable(order.status)}</li>
+						<li class="applications__item applications-item-current-status ${orderColorClass}">${addStatusToTable(order.status)}</li>
 						<li class="applications__item">${addResumeMarker(order.file_name)}</li>
 						<li template-button="order" order-id="${order._id}" user-telegram-id="${order.telegram_id}" class="applications__item template-switch-button user-application-button">🔗</li>
 					</ul>

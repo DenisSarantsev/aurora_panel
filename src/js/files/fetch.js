@@ -43,7 +43,6 @@ export async function fetchVacanciesData() {
       throw new Error(`Ошибка HTTP: ${response.status}`);
     }
 		const data = await response.json();
-		console.log(data)
     return data;
   } catch (error) {
     console.error('Ошибка запроса:', error);
@@ -68,7 +67,6 @@ export async function fetchVacancyData(vacancyId) {
       throw new Error(`Ошибка HTTP: ${response.status}`);
     }
 		const data = await response.json();
-		console.log(data)
     return data;
   } catch (error) {
     console.error('Ошибка запроса:', error);
@@ -118,7 +116,6 @@ export async function fetchUserData(userId) {
       throw new Error(`Ошибка HTTP: ${response.status}`);
     }
 		const data = await response.json();
-		console.log(data)
     return data;
   } catch (error) {
     console.error('Ошибка запроса:', error);
@@ -145,7 +142,6 @@ export async function fetchPostComment(orderId, hrStatus, telegramId, bodyFetch)
       throw new Error(`Ошибка HTTP: ${response.status}`);
     }
     const data = await response.json();
-    console.log(data)
     return data;
   } catch (error) {
     console.error('Ошибка запроса:', error);
@@ -153,7 +149,7 @@ export async function fetchPostComment(orderId, hrStatus, telegramId, bodyFetch)
   }
 }
 
-// --------------------------------------------------------------------------------- Отправляем сообщение
+// --------------------------------------------------------------------------------- Отправляем сообщение пользователю
 export async function fetchPostMessageToUser(orderId, hrStatus, telegramId, message) {
   const apiUrl = `https://fastapi-avrora-hr.fly.dev/path/${hrStatus}/settings/user/${orderId}/send_message/${telegramId}`;
 
@@ -172,7 +168,6 @@ export async function fetchPostMessageToUser(orderId, hrStatus, telegramId, mess
       throw new Error(`Ошибка HTTP: ${response.status}`);
     }
     const data = await response.json();
-    console.log(data)
     return data;
   } catch (error) {
     console.error('Ошибка запроса:', error);
@@ -180,7 +175,57 @@ export async function fetchPostMessageToUser(orderId, hrStatus, telegramId, mess
   }
 }
 
+// --------------------------------------------------------------------------------- Блокируем пользователя
+export async function fetchPostBlockUser(orderId, hrStatus, telegramId, message) {
+  const apiUrl = `https://fastapi-avrora-hr.fly.dev/path/${hrStatus}/settings/user/${orderId}/block_user/${telegramId}`;
 
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'password': '$2b$12$rOy4/Mc.D15d801IweWOtOQlfSLhzoYwJmxuQihKp7QT3PY66qtZm'
+    },
+    body: JSON.stringify({text: message})
+  };
+
+  try {
+    const response = await fetch(apiUrl, requestOptions);
+    if (!response.ok) {
+      throw new Error(`Ошибка HTTP: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Ошибка запроса:', error);
+    throw error;
+  }
+}
+
+// --------------------------------------------------------------------------------- Изменяем статус заявки
+export async function fetchChangeOrderStatus(orderId, hrStatus, telegramId, newStatus) {
+  const apiUrl = `https://fastapi-avrora-hr.fly.dev/path/${hrStatus}/settings/order/${orderId}/change_status/${telegramId}`;
+
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'password': '$2b$12$rOy4/Mc.D15d801IweWOtOQlfSLhzoYwJmxuQihKp7QT3PY66qtZm'
+    },
+    body: JSON.stringify({text: newStatus})
+  };
+
+  try {
+    const response = await fetch(apiUrl, requestOptions);
+    if (!response.ok) {
+      throw new Error(`Ошибка HTTP: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Ошибка запроса:', error);
+    throw error;
+  }
+}
 
 
 
