@@ -319,7 +319,7 @@ const installNewStatus = ( orderId, hrStatus, telegramId, temporaryStatus, statu
 		if ( data.change_status === true ) {
 			// addInformationToAppPage( +document.querySelector(".order-app-id").textContent, +document.querySelector(".user-tg-id").textContent );
 			document.querySelector(".order__application-info-bottom-line-success-message").classList.remove("_app-info-hidden");
-			addInformationToAppPage(orderId, telegramId);
+			// addInformationToAppPage(orderId, telegramId);
 			// runFetchWithMainChain();
 		}
 	})

@@ -256,6 +256,7 @@
             const response = await fetch(apiUrl, requestOptions);
             if (!response.ok) throw new Error(`Ошибка HTTP: ${response.status}`);
             const data = await response.json();
+            console.log(data);
             return data;
         } catch (error) {
             console.error("Ошибка запроса:", error);
@@ -729,10 +730,7 @@
     };
     const installNewStatus = (orderId, hrStatus, telegramId, temporaryStatus, statusesList) => {
         fetchChangeOrderStatus(orderId, hrStatus, telegramId, temporaryStatus).then((data => {
-            if (data.change_status === true) {
-                document.querySelector(".order__application-info-bottom-line-success-message").classList.remove("_app-info-hidden");
-                addInformationToAppPage(orderId, telegramId);
-            }
+            if (data.change_status === true) document.querySelector(".order__application-info-bottom-line-success-message").classList.remove("_app-info-hidden");
         }));
         const changeStatusButton = document.querySelector(".order__application-info-bottom-line-active-button");
         const saveStatusButton = document.querySelector(".order__application-info-bottom-line-save-button");

@@ -221,6 +221,7 @@ export async function fetchChangeOrderStatus(orderId, hrStatus, telegramId, newS
       throw new Error(`Ошибка HTTP: ${response.status}`);
     }
     const data = await response.json();
+		console.log(data)
     return data;
   } catch (error) {
     console.error('Ошибка запроса:', error);
