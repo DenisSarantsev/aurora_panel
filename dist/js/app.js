@@ -67,12 +67,7 @@
             thirdBlock.classList.remove("null-height");
         }
     };
-    const addPreloaderInKindsList = () => {
-        let preloaderContainer = document.querySelector(".preloader-in-widget");
-        new Promise(((resolve, reject) => {
-            resolve();
-        })).then(preloaderContainer.classList.remove("preloader-hidden"));
-    };
+    const addPreloaderInKindsList = () => {};
     addPreloaderInKindsList();
     const removePreloaderInKindsList = () => {
         let preloaderContainer = document.querySelector(".preloader-in-widget");
@@ -238,6 +233,7 @@
             const response = await fetch(apiUrl, requestOptions);
             if (!response.ok) throw new Error(`Ошибка HTTP: ${response.status}`);
             const data = await response.json();
+            console.log(data);
             return data;
         } catch (error) {
             console.error("Ошибка запроса:", error);
@@ -269,7 +265,8 @@
     const data = {
         telegram_id: 210325718,
         user_name: "Denys",
-        hr_status: "admin"
+        hr_status: "admin",
+        password: ""
     };
     const getCheckedKinds = () => {
         const allKindsCheckboxes = document.querySelectorAll(".kinds-app__checkbox-input");
@@ -507,6 +504,7 @@
     let hrStatus = data.hr_status;
     let hrTelegramId = data.telegram_id;
     const writeOrderInformationToAppPage = order => {
+        console.log();
         document.querySelector(".order-app-name").textContent = order.name;
         document.querySelector(".order-app-phone").textContent = order.feedback_phone;
         document.querySelector(".order-app-city").textContent = order.city;
@@ -515,6 +513,7 @@
         document.querySelector(".order-app-kind").textContent = order.kind;
         document.querySelector(".order-app-id").textContent = order._id;
         document.querySelector(".order-app-create").textContent = order.create_at;
+        document.querySelector(".user-external-status").textContent = order.feedback;
         addStatusToOrderPage(order);
         addInfoAboutResume(order);
         addRatingToOrderPage(order);
@@ -591,6 +590,9 @@
         } else if (order.points !== "" && order.points !== null) {
             ratingType.textContent = "Оцінка за к-стю правильних відповідей";
             rating.textContent = order.points;
+        } else {
+            ratingType.textContent = "";
+            rating.textContent = "";
         }
     };
     const writeCommentHandleClick = () => {
@@ -629,11 +631,11 @@
                 const orderData = document.querySelector(".order__application-info");
                 const orderID = +orderData.querySelector(".order-app-id").textContent;
                 const userData = document.querySelector(".order__user-info");
-                const userTelegramID = +userData.querySelector(".user-tg-id").textContent;
+                userData.querySelector(".user-tg-id").textContent;
                 const messageText = modalWindow.querySelector(".message-window__textarea").value;
                 const modalContentWrapper = modalWindow.querySelector(".message-window__fields-container");
                 const successMessageBlock = modalWindow.querySelector(".message-window__success");
-                fetchPostMessageToUser(orderID, data.hr_status, userTelegramID, messageText).then((data => {
+                fetchPostMessageToUser(orderID, data.hr_status, data.telegram_id, messageText).then((data => {
                     modalContentWrapper.classList.add("_hidden");
                     successMessageBlock.classList.remove("_hidden");
                     addInformationToAppPage(+document.querySelector(".order-app-id").textContent, +document.querySelector(".user-tg-id").textContent);
@@ -658,11 +660,11 @@
                 const orderData = document.querySelector(".order__application-info");
                 const orderID = +orderData.querySelector(".order-app-id").textContent;
                 const userData = document.querySelector(".order__user-info");
-                const userTelegramID = +userData.querySelector(".user-tg-id").textContent;
+                userData.querySelector(".user-tg-id").textContent;
                 const messageText = modalWindow.querySelector(".user-block-window__textarea").value;
                 const modalContentWrapper = modalWindow.querySelector(".user-block-window__fields-container");
                 const successMessageBlock = modalWindow.querySelector(".user-block-window__success");
-                fetchPostBlockUser(orderID, data.hr_status, userTelegramID, messageText).then((data => {
+                fetchPostBlockUser(orderID, data.hr_status, data.telegram_id, messageText).then((data => {
                     modalContentWrapper.classList.add("_hidden-window");
                     successMessageBlock.classList.remove("_hidden-window");
                     addInformationToAppPage(+document.querySelector(".order-app-id").textContent, +document.querySelector(".user-tg-id").textContent);
@@ -682,7 +684,7 @@
         for (let i = 0; i < Object.keys(allStatuses).length; i++) if (allStatuses[i].kind === currentKind) currentStatuses.push(allStatuses[i].internal_status);
         statusesList.innerHTML = "";
         for (let item of currentStatuses) if (item === currentStatus) statusesList.insertAdjacentHTML("beforeend", `<option selected value="${item}" class="order__application-statuses-list-item">${item}</option>`); else statusesList.insertAdjacentHTML("beforeend", `<option value="${item}" class="order__application-statuses-list-item">${item}</option>`);
-        let temporaryStatus;
+        let temporaryStatus = currentStatus;
         statusesList.addEventListener("change", (event => {
             const selectedOption = event.target.options[event.target.selectedIndex];
             const selectedValue = selectedOption.value;
@@ -727,7 +729,10 @@
     };
     const installNewStatus = (orderId, hrStatus, telegramId, temporaryStatus, statusesList) => {
         fetchChangeOrderStatus(orderId, hrStatus, telegramId, temporaryStatus).then((data => {
-            if (data.change_status === true) document.querySelector(".order__application-info-bottom-line-success-message").classList.remove("_app-info-hidden");
+            if (data.change_status === true) {
+                document.querySelector(".order__application-info-bottom-line-success-message").classList.remove("_app-info-hidden");
+                addInformationToAppPage(orderId, telegramId);
+            }
         }));
         const changeStatusButton = document.querySelector(".order__application-info-bottom-line-active-button");
         const saveStatusButton = document.querySelector(".order__application-info-bottom-line-save-button");

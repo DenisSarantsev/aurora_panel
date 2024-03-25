@@ -11,6 +11,7 @@ let hrTelegramId = data.telegram_id;
 
 // --------------> Запись нужной информации о заявке на странице заявки
 export const writeOrderInformationToAppPage = (order) => {
+	console.log()
 	document.querySelector(".order-app-name").textContent = order.name;
 	document.querySelector(".order-app-phone").textContent = order.feedback_phone;
 	document.querySelector(".order-app-city").textContent = order.city;
@@ -19,6 +20,8 @@ export const writeOrderInformationToAppPage = (order) => {
 	document.querySelector(".order-app-kind").textContent = order.kind;
 	document.querySelector(".order-app-id").textContent = order._id;
 	document.querySelector(".order-app-create").textContent = order.create_at;
+	document.querySelector(".user-external-status").textContent = order.feedback;
+
 	addStatusToOrderPage(order);
 	addInfoAboutResume(order);
 	addRatingToOrderPage(order);
@@ -27,6 +30,7 @@ export const writeOrderInformationToAppPage = (order) => {
 
 // --------------> Запись нужной информации о пользователе на странице заявки
 export const writeUserInformationToAppPage = (user) => {
+	
 	document.querySelector(".user-app-create").textContent = user.created_at;
 	document.querySelector(".user-app-name").textContent = user.first_name;
 	document.querySelector(".user-app-phone").textContent = user.phone_number;
@@ -118,6 +122,9 @@ const addRatingToOrderPage = (order) => {
 	} else if ( order.points !== "" && order.points !== null ) {
 		ratingType.textContent = "Оцінка за к-стю правильних відповідей";
 		rating.textContent = order.points;
+	} else {
+		ratingType.textContent = "";
+		rating.textContent = "";
 	}
 }
 
@@ -174,7 +181,7 @@ export const addListenerToSendMessage = () => {
 			const messageText = modalWindow.querySelector(".message-window__textarea").value;
 			const modalContentWrapper = modalWindow.querySelector(".message-window__fields-container");
 			const successMessageBlock = modalWindow.querySelector(".message-window__success");
-			fetchPostMessageToUser(orderID, data.hr_status, userTelegramID, messageText)
+			fetchPostMessageToUser(orderID, data.hr_status, data.telegram_id, messageText)
 			.then(data => {
 				modalContentWrapper.classList.add("_hidden");
 				successMessageBlock.classList.remove("_hidden");
@@ -208,7 +215,7 @@ export const addListenerToBlockUserButton = () => {
 			const messageText = modalWindow.querySelector(".user-block-window__textarea").value;
 			const modalContentWrapper = modalWindow.querySelector(".user-block-window__fields-container");
 			const successMessageBlock = modalWindow.querySelector(".user-block-window__success");
-			fetchPostBlockUser(orderID, data.hr_status, userTelegramID, messageText)
+			fetchPostBlockUser(orderID, data.hr_status, data.telegram_id, messageText)
 			.then(data => {
 				modalContentWrapper.classList.add("_hidden-window");
 				successMessageBlock.classList.remove("_hidden-window");
@@ -222,6 +229,7 @@ export const addListenerToBlockUserButton = () => {
 // -------------------------------------------------------------------------- Изменение статуса
 // Добавление статусов в список
 export const addStatusesToList = (orderData) => {
+	
 	const allStatuses = orderData.statuses;
 	const currentKind = orderData.order.kind;
 	const currentStatus = orderData.order.status;
@@ -249,7 +257,7 @@ export const addStatusesToList = (orderData) => {
 
 	// Переключаем статус selected
 
-	let temporaryStatus;
+	let temporaryStatus = currentStatus;
 	statusesList.addEventListener("change", (event) => {
 		const selectedOption = event.target.options[event.target.selectedIndex];
 		const selectedValue = selectedOption.value;
@@ -311,6 +319,7 @@ const installNewStatus = ( orderId, hrStatus, telegramId, temporaryStatus, statu
 		if ( data.change_status === true ) {
 			// addInformationToAppPage( +document.querySelector(".order-app-id").textContent, +document.querySelector(".user-tg-id").textContent );
 			document.querySelector(".order__application-info-bottom-line-success-message").classList.remove("_app-info-hidden");
+			addInformationToAppPage(orderId, telegramId);
 			// runFetchWithMainChain();
 		}
 	})

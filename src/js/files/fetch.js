@@ -194,6 +194,7 @@ export async function fetchPostBlockUser(orderId, hrStatus, telegramId, message)
       throw new Error(`Ошибка HTTP: ${response.status}`);
     }
     const data = await response.json();
+		console.log(data)
     return data;
   } catch (error) {
     console.error('Ошибка запроса:', error);

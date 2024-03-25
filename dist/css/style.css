@@ -1364,7 +1364,7 @@ h6 {
 .order__user-info {
   margin-top: 0.3125rem;
   padding: 0.625rem 0.625rem;
-  background-color: rgba(0, 0, 0, 0.07);
+  background-color: rgba(0, 0, 0, 0.05);
   border-radius: 0.4375rem;
 }
 
@@ -1481,7 +1481,7 @@ h6 {
 .order__application-info {
   margin-top: 0.3125rem;
   padding: 0.625rem 0.625rem;
-  background-color: rgba(0, 0, 0, 0.07);
+  background-color: rgba(0, 0, 0, 0.05);
   border-radius: 0.4375rem;
 }
 
@@ -1574,7 +1574,12 @@ h6 {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 0.9375rem;
+  width: 100%;
 }
 
 .order__application-statuses-list {
@@ -1596,6 +1601,41 @@ h6 {
 
 .order__application-statuses-list:hover {
   cursor: pointer;
+}
+
+.order__application-info-botom-line-top-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.9375rem;
+  width: 100%;
+}
+
+.order__application-info-botom-line-bottom-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.625rem;
+}
+
+.order__application-info-botom-line-bottom-wrapper-external-status {
+  width: 100%;
+  background-color: #f7f7f7;
+  padding: 0.625rem;
+  border-radius: 0.625rem;
+  border: 1px dashed rgba(0, 0, 0, 0.3);
+}
+
+.order__application-info-botom-line-bottom-wrapper-gpt-prompt {
+  width: 100%;
+  background-color: #f7f7f7;
+  padding: 0.625rem;
+  border-radius: 0.625rem;
+  border: 1px dashed rgba(0, 0, 0, 0.3);
 }
 
 .order__application-info-bottom-line-active-button {
@@ -1703,7 +1743,7 @@ h6 {
 .order__application-info-comments {
   margin-top: 0.3125rem;
   padding: 0.625rem 0.625rem;
-  background-color: rgba(0, 0, 0, 0.07);
+  background-color: rgba(0, 0, 0, 0.05);
   border-radius: 0.4375rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1809,6 +1849,14 @@ h6 {
 
 ._app-info-hidden {
   display: none;
+}
+
+.user-external-status-title {
+  font-weight: 600;
+}
+
+.order-gpt-prompt-title {
+  font-weight: 600;
 }
 
 .vacancy__navigation-line {

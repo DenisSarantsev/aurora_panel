@@ -14,7 +14,7 @@
 	&__user-info {
 		margin-top: toRem(5);
 		padding: toRem(10) toRem(10);
-		background-color: rgba($color: #000000, $alpha: 0.07);
+		background-color: rgba($color: #000000, $alpha: 0.05);
 		border-radius: $blocksBorderRadius;
 	}
 	&__user-title {
@@ -31,6 +31,7 @@
 		align-items: start;
 		gap: toRem(5);
 		padding: toRem(5) 0;
+
 	}
 	&__user-info-item {
 		width: 100%;
@@ -51,6 +52,7 @@
 		display: flex;
 		justify-content: flex-start;
 		gap: toRem(15);
+
 	}
 	&__user-send-message-button {
 		width: toRem(300);
@@ -93,7 +95,7 @@
 	&__application-info {
 		margin-top: toRem(5);
 		padding: toRem(10) toRem(10);
-		background-color: rgba($color: #000000, $alpha: 0.07);
+		background-color: rgba($color: #000000, $alpha: 0.05);
 		border-radius: $blocksBorderRadius;
 	}
 	&__application-title-line {
@@ -155,7 +157,9 @@
 		width: 100%;
 		display: flex;
 		justify-content: flex-start;
+		flex-direction: column;
 		gap: toRem(15);
+		width: 100%;
 	}
 	&__application-statuses-list {
 		border-radius: $blocksBorderRadius;
@@ -174,6 +178,30 @@
 		&:hover {
 			cursor: pointer;
 		}
+	}
+	&__application-info-botom-line-top-wrapper {
+		display: flex;
+		gap: toRem(15);
+		width: 100%;
+	}
+	&__application-info-botom-line-bottom-wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: toRem(10);
+	}
+	&__application-info-botom-line-bottom-wrapper-external-status {
+		width: 100%;
+		background-color: #f7f7f7;
+		padding: toRem(10);
+		border-radius: toRem(10);
+		border: 1px dashed rgba($color: #000000, $alpha: 0.3);
+	}
+	&__application-info-botom-line-bottom-wrapper-gpt-prompt {
+		width: 100%;
+		background-color: #f7f7f7;
+		padding: toRem(10);
+		border-radius: toRem(10);
+		border: 1px dashed rgba($color: #000000, $alpha: 0.3);
 	}
 	&__application-info-bottom-line-active-button {
 		width: toRem(300);
@@ -244,7 +272,7 @@
 	&__application-info-comments {
 		margin-top: toRem(5);
 		padding: toRem(10) toRem(10);
-		background-color: rgba($color: #000000, $alpha: 0.07);
+		background-color: rgba($color: #000000, $alpha: 0.05);
 		border-radius: $blocksBorderRadius;
 		display: flex;
 		flex-direction: column;
@@ -330,4 +358,12 @@
 
 ._app-info-hidden {
 	display: none;
+}
+
+.user-external-status-title {
+	font-weight: 600;
+}
+
+.order-gpt-prompt-title {
+	font-weight: 600;
 }
