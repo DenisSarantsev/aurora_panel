@@ -1,10 +1,14 @@
 
 .vacancies {
+	@media (max-width: em(1100)){
+		overflow-x: scroll;
+	}
 	&__table-result-container {
 		font-size: toRem(14);
 		display: flex;
 		flex-direction: column;
 		gap: toRem(5);
+		min-width: toRem(768);
 	}
 	&__table-title {
 		display: grid;
@@ -38,6 +42,10 @@
 		background-color: rgba($color: #000000, $alpha: 0.05);
 		border-radius: $blocksBorderRadius;
 		border: 2px solid transparent;
+		@media (max-width:$mobile){
+			padding: toRem(5) toRem(3);
+			font-size: toRem(12);
+		}
 		&:hover {
 			border: 2px solid $mainYellow;
 			cursor: pointer;

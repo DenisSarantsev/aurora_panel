@@ -12,6 +12,9 @@
 		flex-direction: column;
 		height: auto;
 		gap: toRem(5);
+		@media (max-width:$mobile){
+			padding: toRem(15) toRem(10) toRem(5) toRem(10);
+		}
 	}
 }
 

@@ -58,6 +58,7 @@
 			font-size: toRem(13);
 			display: flex;
 			justify-content: flex-end;
+			align-items: center;
 		}
 	}
 	&__user-bottom-line {
@@ -66,7 +67,9 @@
 		display: flex;
 		justify-content: flex-start;
 		gap: toRem(15);
-
+		@media (max-width:$mobile){
+			gap: toRem(5);
+		}
 	}
 	&__user-send-message-button {
 		width: toRem(300);
@@ -83,6 +86,7 @@
 		font-weight: 600;
 		@media (max-width:$mobile){
 			width: 100%;
+			font-size: toRem(12);
 		}
 		&:hover {
 			transition: all 0.3s ease 0s;
@@ -105,6 +109,7 @@
 		font-weight: 600;
 		@media (max-width:$mobile){
 			width: 100%;
+			font-size: toRem(12);
 		}
 		&:hover {
 			transition: all 0.3s ease 0s;
@@ -133,12 +138,12 @@
 		display: flex;
 		align-items: center;
 		gap: toRem(6);
-		& div {
-
-		}
 		padding: toRem(3) toRem(15);
 		border-radius: $blocksBorderRadius;
 		font-size: toRem(14);
+		@media (max-width:$mobile){
+			padding: toRem(0);
+		}
 	}
 	&__application-info-list {
 		margin-top: toRem(5);
@@ -209,7 +214,9 @@
 		box-shadow: 0px 0px 4px 1px rgba(166,166,166,0.6) inset;
 		-webkit-box-shadow: 0px 0px 4px 1px rgba(166,166,166,0.6) inset;
 		-moz-box-shadow: 0px 0px 4px 1px rgba(166,166,166,0.6) inset;
-		
+		@media (max-width:$mobile){
+			max-width: 100%;
+		}
 		&:hover {
 			cursor: pointer;
 		}
@@ -218,6 +225,12 @@
 		display: flex;
 		gap: toRem(15);
 		width: 100%;
+		@media (max-width:$mobile){
+			gap: toRem(5);
+			font-size: toRem(12);
+			flex-direction: column-reverse;
+			align-items: center;
+		}
 	}
 	&__application-info-botom-line-bottom-wrapper {
 		display: flex;
@@ -230,6 +243,10 @@
 		padding: toRem(10);
 		border-radius: toRem(10);
 		border: 1px dashed rgba($color: #000000, $alpha: 0.3);
+		@media (max-width:$mobile){
+			font-size: toRem(12);
+			padding: toRem(7);
+		}
 	}
 	&__application-info-botom-line-bottom-wrapper-gpt-prompt {
 		width: 100%;
@@ -237,6 +254,10 @@
 		padding: toRem(10);
 		border-radius: toRem(10);
 		border: 1px dashed rgba($color: #000000, $alpha: 0.3);
+		@media (max-width:$mobile){
+			font-size: toRem(12);
+			padding: toRem(7);
+		}
 	}
 	&__application-info-bottom-line-active-button {
 		width: toRem(300);
@@ -250,10 +271,14 @@
 		padding: toRem(5) toRem(20);
 		border-radius: $blocksBorderRadius;
 		transition: all 0.3s ease 0s;
+		@media (max-width:$mobile){
+			width: 100%;
+		}
 		&:hover {
 			transition: all 0.3s ease 0s;
 			background-color: rgba($color: $mainYellow, $alpha: 1);
 			color: rgba($color: #000000, $alpha: 1);
+			padding: toRem(5);
 		}
 	}
 	&__application-info-bottom-line-save-button {
@@ -268,6 +293,10 @@
 		padding: toRem(5) toRem(20);
 		border-radius: $blocksBorderRadius;
 		transition: all 0.3s ease 0s;
+		@media (max-width:$mobile){
+			padding: toRem(5);
+			width: 100%;
+		}
 		&:hover {
 			transition: all 0.3s ease 0s;
 			background-color: rgba($color: rgb(0, 222, 0), $alpha: 1);
@@ -286,6 +315,10 @@
 		padding: toRem(5) toRem(20);
 		border-radius: $blocksBorderRadius;
 		transition: all 0.3s ease 0s;
+		@media (max-width:$mobile){
+			padding: toRem(5);
+			width: 100%;
+		}
 		&:hover {
 			transition: all 0.3s ease 0s;
 			background-color: rgba($color: red, $alpha: 1);
@@ -324,6 +357,9 @@
 		padding: toRem(10);
 		border-radius: toRem(10);
 		border: 1px dashed rgba($color: #000000, $alpha: 0.3);
+		@media (max-width:$mobile){
+			font-size: toRem(12);
+		}
 	}
 	&__application-info-comments-textarea {
 		border-radius: $blocksBorderRadius;
@@ -349,6 +385,10 @@
 		align-items: center;
 		gap: toRem(5);
 		transition: all 0.3s ease 0s;
+		@media (max-width:$mobile){
+			width: 100%;
+			font-size: toRem(13);
+		}
 		&:hover {
 			transition: all 0.3s ease 0s;
 			background-color: $mainYellow;

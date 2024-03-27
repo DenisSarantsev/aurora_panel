@@ -1,6 +1,9 @@
 /* Для WebKit-браузеров (Chrome, Safari) */
 ::-webkit-scrollbar {
   width: 12px; /* Ширина скроллбара */
+	@media (max-width:$mobile){
+		width: 4px;
+	}
 }
 
 ::-webkit-scrollbar-thumb {
