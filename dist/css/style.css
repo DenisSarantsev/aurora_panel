@@ -1531,6 +1531,10 @@ h6 {
   font-size: 0.875rem;
 }
 
+.order__application-info-item-active-status {
+  white-space: nowrap;
+}
+
 .order__application-info-list {
   margin-top: 0.3125rem;
   display: -webkit-box;
@@ -2539,6 +2543,7 @@ h6 {
 .message-window__title {
   font-size: 0.9375rem;
   font-weight: 500;
+  text-align: center;
 }
 
 .message-window__close-button {
@@ -2661,6 +2666,7 @@ h6 {
 .user-block-window__title {
   font-size: 0.9375rem;
   font-weight: 500;
+  text-align: center;
 }
 
 .user-block-window__textarea {
@@ -3124,7 +3130,7 @@ h6 {
   }
 
   .order__application-info-comments-text {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
   }
 
   .order__application-info-comments-button {
@@ -3163,6 +3169,30 @@ h6 {
 
   .vacancy-data {
     text-align: right;
+  }
+
+  .login-form {
+    width: 100%;
+  }
+
+  .login-form__input-field {
+    width: 100%;
+  }
+
+  .message-window {
+    padding: 0.9375rem;
+  }
+
+  .message-window__fields-container {
+    gap: 0.9375rem;
+  }
+
+  .user-block-window {
+    padding: 0.9375rem;
+  }
+
+  .user-block-window__fields-container {
+    gap: 0.9375rem;
   }
 }
 
@@ -3208,6 +3238,18 @@ h6 {
         -ms-flex-align: start;
             align-items: start;
     gap: 0.3125rem;
+  }
+}
+
+@media (max-width: 34.375em) {
+  .message-window__container {
+    min-width: 100%;
+    padding: 0.9375rem;
+  }
+
+  .user-block-window__container {
+    min-width: 100%;
+    padding: 0.9375rem;
   }
 }
 
