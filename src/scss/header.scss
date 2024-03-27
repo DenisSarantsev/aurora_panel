@@ -9,6 +9,9 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		@media (max-width:$mobile){
+			padding: toRem(0) toRem(10);
+		}
 	}
 	&__logo-container {
 		display: flex;

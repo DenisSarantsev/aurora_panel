@@ -2,6 +2,11 @@
 .applications {
 	height: 100%;
 	width: 100%;
+	@media (max-width: em(1100)){
+		overflow-x: scroll;
+	}
+	
+
 		&__table-title {
 			display: grid;
 			grid-template-columns: 100px 1fr 30px 1fr 120px 100px 1fr 150px 30px 30px;
@@ -13,6 +18,9 @@
 			font-weight: 500;
 			border-radius:$blocksBorderRadius;
 			padding: toRem(5);
+			@media (max-width: em(1200)){
+				grid-template-columns: 100px 1fr 30px 1fr 120px 100px 1fr 100px 30px 30px;
+			}
 		}
 		&__table-title-item {
 			display: flex;
@@ -35,6 +43,7 @@
 			grid-template-rows: repeat(1fr);
 			grid-template-columns: 1fr;
 			gap: toRem(5);
+			min-width: toRem(992);
 		}
 
 		&__row {
@@ -47,6 +56,9 @@
 			background-color: rgba($color: #000000, $alpha: 0.05);
 			border-radius: $blocksBorderRadius;
 			border: 2px solid transparent;
+			@media (max-width: em(1200)){
+				grid-template-columns: 100px 1fr 30px 1fr 120px 100px 1fr 100px 30px 30px;
+			}
 			&>*:not(:nth-child(8)) {
 				padding: toRem(5);
 			}
@@ -69,6 +81,7 @@
 			white-space: normal;
 			hyphens: manual;
 			padding: toRem(0) toRem(3);
+			
 		}
 		&__item-link {
 			padding: 0px;
