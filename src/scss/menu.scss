@@ -11,6 +11,9 @@
 		display: flex;
 		align-items: start;
 		font-size: toRem(16);
+		@media (max-width:$mobile){
+			font-size: toRem(14);
+		}
 	}
 	&__menu-item {
 		width: 100%;

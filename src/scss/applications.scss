@@ -30,6 +30,9 @@
 			text-align: center;
 			color: rgba($color: #000000, $alpha: 1);
 			font-size: toRem(14);
+			@media (max-width:$mobile){
+				padding: toRem(3) 0;
+			}
 		}
 		&__table-file-icon {
 			width: toRem(18);
@@ -61,6 +64,9 @@
 			}
 			&>*:not(:nth-child(8)) {
 				padding: toRem(5);
+				@media (max-width:$mobile){
+					padding: toRem(2);
+				}
 			}
 			&:hover {
 				border: 2px solid $mainYellow;
@@ -68,6 +74,9 @@
 			}
 			&>*:not(:last-child) {
 				border-right: 1px solid $borderColor;
+			}
+			@media (max-width:$mobile){
+				font-size: toRem(12);
 			}
 
 		}

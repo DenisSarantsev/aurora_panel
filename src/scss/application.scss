@@ -39,12 +39,26 @@
 		gap: toRem(5);
 		border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
 		padding: toRem(0) toRem(5) toRem(5) toRem(5);
+		@media (max-width:$mobile){
+			padding: toRem(0) toRem(3) toRem(3) toRem(3);
+		}
 	}
 	&__user-info-item-title {
 		color: rgba($color: #000000, $alpha: 0.6);
 		width: 31%;
+		@media (max-width:$mobile){
+			width: 50%;
+			font-size: toRem(13);
+		}
 	}
 	&__user-info-item-data {
+		@media (max-width:$mobile){
+			width: 50%;
+			text-align: right;
+			font-size: toRem(13);
+			display: flex;
+			justify-content: flex-end;
+		}
 	}
 	&__user-bottom-line {
 		margin-top: toRem(10);
@@ -67,6 +81,9 @@
 		color: rgba($color: #000000, $alpha: 0.7);
 		background-color: rgba($color: $mainYellow, $alpha: 0.5);
 		font-weight: 600;
+		@media (max-width:$mobile){
+			width: 100%;
+		}
 		&:hover {
 			transition: all 0.3s ease 0s;
 			background-color: $mainYellow;
@@ -86,6 +103,9 @@
 		transition: all 0.3s ease 0s;
 		background-color: rgba($color: red, $alpha: 0.5);
 		font-weight: 600;
+		@media (max-width:$mobile){
+			width: 100%;
+		}
 		&:hover {
 			transition: all 0.3s ease 0s;
 			background-color: rgba($color: red, $alpha: 1);
@@ -134,17 +154,32 @@
 		gap: toRem(4);
 		border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
 		padding: toRem(0) toRem(5) toRem(5) toRem(5);
+		@media (max-width:$mobile){
+			padding: toRem(0) toRem(3) toRem(3) toRem(3);
+		}
 	}
 	&__application-info-item-title {
 		color: rgba($color: #000000, $alpha: 0.6);
 		width: 31%;
+		@media (max-width:$mobile){
+			width: 50%;
+			font-size: toRem(13);
+		}
 	}
 	&__application-info-item-data {
+		@media (max-width:$mobile){
+			width: 50%;
+			text-align: right;
+			font-size: toRem(13);
+		}
 	}
 	&__application-info-resume-button-container {
 		display: flex;
 		align-items: end;
 		gap: toRem(3);
+		@media (max-width:$mobile){
+			width: 100%;
+		}
 		&:hover {
 			text-decoration: underline;
 		}

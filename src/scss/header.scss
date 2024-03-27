@@ -20,10 +20,16 @@
 	&__logo {
 		max-width: toRem(100);
 		width: 100%;
+		@media (max-width:$mobile){
+			max-width: toRem(70);
+		}
 	}
 	&__logo-subtitle {
 		font-size: toRem(20);
 		color: $lightGrey;
+		@media (max-width:$mobile){
+			font-size: toRem(16);
+		}
 	}
 	&__right-container {
 		display: flex;
@@ -32,6 +38,10 @@
 		font-size: toRem(16);
 		font-weight: 500;
 		color: rgba($color: #000000, $alpha: 0.7);
+		@media (max-width:$mobile){
+			gap: toRem(10);
+			font-size: toRem(15);
+		}
 	}
 	&__user-information {
 
@@ -46,6 +56,9 @@
 		justify-content: center;
 		align-items: center;
 		font-weight: 500;
+		@media (max-width:$mobile){
+			padding: toRem(5) toRem(10);
+		}
 		&:hover {
 			transition: all 0.3s ease 0s;
 			cursor: pointer;

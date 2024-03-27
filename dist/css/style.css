@@ -2775,7 +2775,7 @@ h6 {
 
   .applications-filter__bottom-container {
     gap: 0.625rem;
-    padding: 0.3125rem 0rem 0rem 0rem;
+    padding: 0rem 0rem 0rem 0rem;
   }
 
   .applications-filter__reset-button {
@@ -2817,7 +2817,7 @@ h6 {
 
   .kinds-app__checkbox-container {
     width: 100%;
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     font-weight: 500;
   }
 
@@ -2843,6 +2843,7 @@ h6 {
   }
 
   .applications-filter__bottom-container {
+    padding: 0rem 0rem 0rem 0rem;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -2873,6 +2874,14 @@ h6 {
         -ms-flex-align: start;
             align-items: start;
     gap: 0.3125rem;
+  }
+
+  .kinds-app__checkboxes-container {
+    gap: 0.3125rem;
+  }
+
+  .kinds-app__checkbox-container {
+    padding: 0rem 0.3125rem;
   }
 
   .search-app {
@@ -2906,6 +2915,87 @@ h6 {
 @media (max-width: 47.99875em) {
   .header__container {
     padding: 0rem 0.625rem;
+  }
+
+  .header__logo {
+    max-width: 4.375rem;
+  }
+
+  .header__logo-subtitle {
+    font-size: 1rem;
+  }
+
+  .header__right-container {
+    gap: 0.625rem;
+    font-size: 0.9375rem;
+  }
+
+  .header__sign-out {
+    padding: 0.3125rem 0.625rem;
+  }
+
+  .menu__menu-list {
+    font-size: 0.875rem;
+  }
+
+  .applications__table-title-item {
+    padding: 0.1875rem 0;
+  }
+
+  .applications__row > *:not(:nth-child(8)) {
+    padding: 0.125rem;
+  }
+
+  .applications__row {
+    font-size: 0.75rem;
+  }
+
+  .order__user-info-item {
+    padding: 0rem 0.1875rem 0.1875rem 0.1875rem;
+  }
+
+  .order__user-info-item-title {
+    width: 50%;
+    font-size: 0.8125rem;
+  }
+
+  .order__user-info-item-data {
+    width: 50%;
+    text-align: right;
+    font-size: 0.8125rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+
+  .order__user-send-message-button {
+    width: 100%;
+  }
+
+  .order__user-black-list-button {
+    width: 100%;
+  }
+
+  .order__application-info-item {
+    padding: 0rem 0.1875rem 0.1875rem 0.1875rem;
+  }
+
+  .order__application-info-item-title {
+    width: 50%;
+    font-size: 0.8125rem;
+  }
+
+  .order__application-info-item-data {
+    width: 50%;
+    text-align: right;
+    font-size: 0.8125rem;
+  }
+
+  .order__application-info-resume-button-container {
+    width: 100%;
   }
 }
 
